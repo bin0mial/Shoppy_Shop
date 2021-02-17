@@ -13,4 +13,7 @@ module.exports = {
         let user = await User.findOne({where: {username: "john"}});
         res.status(200).send(user);
     },
+    get: (req, res) => {
+        res.render("profile", {"layout": "template"});
+    }
 };

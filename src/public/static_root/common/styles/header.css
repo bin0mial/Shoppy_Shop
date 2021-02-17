@@ -1,0 +1,63 @@
+.navbar{
+    background-color: #1a334e !important; 
+}
+
+.navbar-toggler{
+    color: white !important;
+    background-color: white !important;
+}
+
+.profile-pic{
+    margin-right: 10px;
+}
+
+.profile img{
+    width: 40px;
+    border-radius: 50%;
+    object-fit: fill;
+}
+.profile p{
+    color: white;
+}
+.profile h3{
+    font-size: larger;
+    margin: 0;
+}
+
+.logo{
+    margin-left: 40px;
+}
+
+a i{
+    margin-right: 10px;
+}
+
+h5{
+    display: inline-block;
+}
+
+nav a:hover{
+    color:  rgb(160, 160, 160) !important;
+}
+
+nav a{
+    color: white !important;
+    font-family: 'cardo';
+}
+.profile p{
+    font-size: small;
+    margin: 0;
+}
+.profile{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
