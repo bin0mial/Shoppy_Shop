@@ -11,6 +11,7 @@ route.use(expressLayout);
 route.get("/", bodyParser, homepageController.get);
 // route.post("/", bodyParser, homepageController.post);
 
+route.get("/register", bodyParser, homepageController.register);
 
 // route.get("/profiles", bodyParser, profileController.list);
 // route.post("/", bodyParser, homepageController.post);

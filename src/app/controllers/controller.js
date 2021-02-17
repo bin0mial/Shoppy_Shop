@@ -15,5 +15,12 @@ module.exports = {
     },
     get: (req, res) => {
         res.render("profile", {"layout": "template"});
+    },
+    register: (req, res) => {
+        data = {
+            a:"a",
+            b: "b"
+        }
+        res.render("auth/RegisterPage", {"layout": "template", ...data});
     }
 };
