@@ -76,7 +76,7 @@ hr {
     transform: rotate(360deg);
 }
 
-.icons{
+.footer-icons{
     display: flex;
     flex-direction: row;
 }
