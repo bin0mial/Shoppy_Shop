@@ -1,9 +1,12 @@
 'use strict';
 
+const roles = require("../../models/role");
+
 module.exports = {
     up: async (queryInterface, Sequelize) => {
         await queryInterface.createTable('users', {
             id: {type: Sequelize.BIGINT, primaryKey: true, autoIncrement: true},
+
             name: {type: Sequelize.STRING(50)},
             username: {type: Sequelize.STRING(16), allowNull: false, unique:true, },
             password: {
