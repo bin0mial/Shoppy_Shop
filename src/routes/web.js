@@ -8,6 +8,7 @@ const homepageController = require("../app/controllers/controller");
 // TODO Web routes Written down there as follows
 route.use(expressLayout);
 
+route.get("/home", bodyParser, homepageController.home);
 route.get("/", bodyParser, homepageController.get);
 // route.post("/", bodyParser, homepageController.post);
 

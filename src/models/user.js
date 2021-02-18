@@ -1,6 +1,7 @@
 'use strict';
 const crypto = require("crypto");
 
+
 const {
     Model
 } = require('sequelize');
@@ -12,14 +13,17 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            this.hasOne(models.role, {as: "role", sourceKey: "role_id", foreignKey: "id"});
+            this.belongsTo(models.product, {as: "products", foreignKey: "id", targetKey: "owner_id"});
+            this.belongsTo(models.cart, {as: "cart", foreignKey: "id", targetKey: "customer_id"});
         }
     }
 
+    console.log(User.associations)
     User.init({
-        id: {type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true},
+        id: {type: DataTypes.BIGINT, autoIncrement: true, primaryKey: true, allowNull: false},
         name: {type: DataTypes.STRING(50)},
-        username: {type: DataTypes.STRING(16), allowNull: false, unique:true, },
+        username: {type: DataTypes.STRING(16), allowNull: false, unique: true,},
         password: {
             type: DataTypes.STRING,
             set(value) {
@@ -30,7 +34,19 @@ module.exports = (sequelize, DataTypes) => {
         email: {type: DataTypes.STRING, unique: true},
         phone_number: {type: DataTypes.STRING(15)},
         credit_card: {type: DataTypes.STRING(15), unique: true},
-        profile_picture: {type: DataTypes.STRING}
+        profile_picture: {type: DataTypes.STRING},
+        role_id:
+            {
+                type: DataTypes.BIGINT,
+                after: "id",
+                references: {
+                    model: 'roles',
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+            },
+
     }, {
         sequelize,
         modelName: 'User',
