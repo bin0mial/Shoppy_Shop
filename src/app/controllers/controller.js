@@ -16,11 +16,15 @@ module.exports = {
     get: (req, res) => {
         res.render("profile", {"layout": "template"});
     },
+
     register: (req, res) => {
-        data = {
-            a:"a",
-            b: "b"
-        }
-        res.render("auth/RegisterPage", {"layout": "template", ...data});
+        res.render("auth/RegisterPage",{"layout": "template/template2"});
+    },
+    login: (req, res) => {
+        res.render("auth/LoginPage",{"layout": "template/template2"});
+    },
+    orders: (req, res) => {
+        res.render("orders/itemsOrder", {"layout": "template"});
     }
+
 };
