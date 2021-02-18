@@ -22,5 +22,8 @@ module.exports = {
             b: "b"
         }
         res.render("auth/RegisterPage", {"layout": "template", ...data});
-    }
+    },
+    home: (req, res) => {
+        res.render("home", {"layout": "template"});
+    },
 };
