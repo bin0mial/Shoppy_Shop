@@ -27,13 +27,20 @@ module.exports = {
     get: (req, res) => {
         res.render("profile", {"layout": "template"});
     },
+
     register: (req, res) => {
-        data = {
-            a:"a",
-            b: "b"
-        }
-        res.render("auth/RegisterPage", {"layout": "template", ...data});
+
+        res.render("auth/RegisterPage",{"layout": "template/template2"});
     },
+    
+    login: (req, res) => {
+        res.render("auth/LoginPage",{"layout": "template/template2"});
+    },
+
+    orders: (req, res) => {
+        res.render("orders/itemsOrder", {"layout": "template"});
+    },
+
     home: async (req, res) => {
         const user = await User.findOne({where: {username: "abd"}});
         const products = await Models.product.findAll({ include: [{model:Models.product_image, as: "images"}]});
@@ -42,4 +49,5 @@ module.exports = {
         // res.send(products);
         res.render("home", {"layout": "template", "username": user.username, products: products});
     },
+
 };

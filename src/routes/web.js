@@ -13,6 +13,11 @@ route.get("/", bodyParser, homepageController.get);
 // route.post("/", bodyParser, homepageController.post);
 
 route.get("/register", bodyParser, homepageController.register);
+route.get("/login", bodyParser, homepageController.login);
+route.get("/orders", bodyParser, homepageController.orders);
+route.get("/RegisterPage.html", bodyParser, homepageController.register);
+route.get("/LoginPage.html", bodyParser, homepageController.login);
+
 
 // route.get("/profiles", bodyParser, profileController.list);
 // route.post("/", bodyParser, homepageController.post);
