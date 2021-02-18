@@ -24,6 +24,6 @@ module.exports = {
         res.render("auth/RegisterPage", {"layout": "template", ...data});
     },
     home: (req, res) => {
-        res.render("home", {"layout": "template"});
+        res.render("home", {"layout": "template","username":"test"});
     },
 };

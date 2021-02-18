@@ -37,7 +37,7 @@
 }
 
 .homeParent2:hover .homeIMGTop2{
-    left: -10px;
+    left: -6px;
 }
 
 .homeIMGTop2{
@@ -91,12 +91,55 @@
 }
 
 .homeParent4{
+    /* background-color: rgb(82, 2, 6); */
     cursor: pointer;
-    height: 550px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     overflow: hidden;
+}
+.homeMid2H ,.homeMid2P{
+    color: rgb(75, 72, 72);
+}
+
+.homeIMGMid2{
+    height: 330px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.homeMidDiv2{
+    /* margin-top: 20px; */
+    width: 100%;
+    bottom: 2px;
+    padding: 10px;
+    height: 200px;
+    position: relative;
+    color: white;
+    background-color:white;
+    transition: 0.4s all ease-in-out;
+}
+
+.homeParent4:hover .homeMidDiv2{
+    /* display: inline-block !important; */
+    bottom: 70px;
+}
+
+.homeicons{
+    color: #000;
+}
+
+.bi-eye  ,.bi-cart-plus-fill ,.bi-heart{
+    margin-left: 20px;
+    transition: 0.1s all ease-in-out;
+}
+.bi-eye:hover  ,.bi-cart-plus-fill:hover ,.bi-heart:hover{
+    color: tomato;
+}
+
+.homeMid2H{
+    /* width: 180px; */
 }
