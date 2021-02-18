@@ -27,6 +27,7 @@
 
 .homeParent2{
     cursor: pointer;
+    width: 320;
     height: 490px;
     overflow: hidden;
     display: flex;
@@ -37,11 +38,12 @@
 }
 
 .homeParent2:hover .homeIMGTop2{
-    left: -6px;
+    left: -10px;
 }
 
 .homeIMGTop2{
     left: -0px;
+    /* object-fit: contain; */
     position: relative;
     transition: 0.2s all ease-in-out;
 }

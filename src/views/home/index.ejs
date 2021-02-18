@@ -11,7 +11,7 @@ Home Page
 <%- contentFor("content") %>
 <div class="container">
     <div class="row">
-        <div class="col col-sm-8 col-lg-8 mb-4" onclick="location.href='/';">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mb-4">
             <div class="homeParent1">
                 <img class="homeIMGTop1" src="/static/common/images/abd/pic1.jpg">
                 <div class="homeTopDiv1">
@@ -19,7 +19,7 @@ Home Page
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4 mb-4" onclick="location.href='/';">
+        <div class="col-12 col-md-12 col-lg-4 mb-4 d-flex justify-content-center">
             <div class="homeParent2">
                 <img class="homeIMGTop2" src="/static/common/images/abd/pic2.jpg">
                 <div class="homeTopDiv2">
@@ -30,7 +30,7 @@ Home Page
         </div>
     </div>
     <div class="row">
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-lg-4">
             <div class="homeParent3">
                 <img class="homeIMGMid1" src="/static/common/images/abd/product-46.jpg">
                 <div class="homeMidDiv1">
@@ -39,7 +39,7 @@ Home Page
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col col-lg-4">
             <div class="homeParent3">
                 <img class="homeIMGMid1" src="/static/common/images/abd/product-46.jpg">
                 <div class="homeMidDiv1">
@@ -48,7 +48,7 @@ Home Page
                 </div>
             </div>
         </div>
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-lg-4">
             <div class="homeParent3">
                 <img class="homeIMGMid1" src="/static/common/images/abd/product-47.jpg">
                 <div class="homeMidDiv1">
@@ -63,12 +63,12 @@ Home Page
         <h4><i class="bi bi-arrow-down-square-fill"></i></h4>
     </div>
     <div class="row mb-4">
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-9.jpg">
+                <img class="homeIMGMid2" src="<%= products[0].images.image %>">
                 <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Floral Print Dress</h4>
-                    <p class="homeMid2P">$50.00</p>
+                    <h4 class="homeMid2H"><%= products[0].name.substring(0, 20) + (products[0].name.length>20? "..." : "") %></h4>
+                    <p class="homeMid2P">$ <%= products[0].price %></p>
                     <div class="homeicons d-flex justify-content-center">
                         <i class="bi bi-eye"></i>
                         <i class="bi bi-cart-plus-fill"></i>
@@ -78,7 +78,7 @@ Home Page
                 
             </div>
         </div>
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
                 <img class="homeIMGMid2" src="/static/common/images/abd/product-7.jpg">
                 <div class="homeMidDiv2">
@@ -93,7 +93,7 @@ Home Page
                 
             </div>
         </div>
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
                 <img class="homeIMGMid2" src="/static/common/images/abd/product-32.jpg">
                 <div class="homeMidDiv2">
@@ -108,9 +108,8 @@ Home Page
                 
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col col-lg-4" onclick="location.href='/';">
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
                 <img class="homeIMGMid2" src="/static/common/images/abd/product-10.jpg">
                 <div class="homeMidDiv2">
@@ -125,7 +124,7 @@ Home Page
                 
             </div>
         </div>
-        <div class="col col-lg-4" onclick="location.href='/';">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
                 <img class="homeIMGMid2" src="/static/common/images/abd/product-48.jpg">
                 <div class="homeMidDiv2">
@@ -140,7 +139,7 @@ Home Page
                 
             </div>
         </div>
-        <div class="col col-lg-4">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="homeParent4">
                 <img class="homeIMGMid2" src="/static/common/images/abd/product-6.jpg">
                 <div class="homeMidDiv2">

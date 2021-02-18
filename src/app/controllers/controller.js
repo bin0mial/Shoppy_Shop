@@ -34,7 +34,12 @@ module.exports = {
         }
         res.render("auth/RegisterPage", {"layout": "template", ...data});
     },
-    home: (req, res) => {
-        res.render("home", {"layout": "template","username":"test"});
+    home: async (req, res) => {
+        const user = await User.findOne({where: {username: "abd"}});
+        const products = await Models.product.findAll({ include: [{model:Models.product_image, as: "images"}]});
+        
+        // console.log(products);
+        // res.send(products);
+        res.render("home", {"layout": "template", "username": user.username, products: products});
     },
 };
