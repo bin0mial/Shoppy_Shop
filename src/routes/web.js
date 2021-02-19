@@ -19,11 +19,19 @@ route.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
 route.use(expressLayout);
+route.use(middlewares["SessionMiddleware"]);
 
 // TODO Web routes Written down there as follows
 route.get("/home", bodyParser, homepageController.home);
+
+route.get("/", bodyParser, homepageController.get);
+route.get("/profile", bodyParser, homepageController.profile);
+route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
+
 route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
+
 // route.post("/", bodyParser, homepageController.post);
 
 // route.get("/register", bodyParser, homepageController.register);

@@ -1,14 +1,93 @@
-
 <%- contentFor('title') %>
-Malik Hesham
+    Profile
 
+<%- contentFor("styles") %>
+    <!-- For CSS -->
+    <link rel="stylesheet" href="/static/common/styles/profile.css">
 
 <%- contentFor('content') %>
-<%= session.user.name %>
-<%= session.isAuth %>
-<div class="col">
-    <h1>Hello Malik</h1>
-</div>
-<div>
-    asdsa
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="profileH2">My Account</h2>
+            </div>
+            <div class="col col-md-4">
+                <div class="list-group">
+                    <a href="/profile" class="list-group-item list-group-item-action noBORDER-RL active">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Personal Info</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Orders</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Wishlist</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Logout</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <label>First Name *</label>
+                        <input type="text" id="firstName" class="form-control" value="">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label>Second Name *</label>
+                        <input type="text" id="lastName" class="form-control" value="">
+                    </div>
+                    <div class="col-12 col-md-12 profileEmail">
+                        <label>Email Address *</label>
+                        <input type="email" id="userEmail" class="form-control" value=""
+                            placeholder="name@email.com">
+                    </div>
+                    <div class="col-12 col-md-12 profileEmail">
+                        <label>Location Address *</label>
+                        <input type="text" id="useraddress" class="form-control" value=""
+                            placeholder="area - street no - building no - appartment no.">
+                    </div>
+                    <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
+                        <label class="genderLabel">Birth Date *</label>
+                        <input type="date" id="start" name="trip-start"
+                                    min="1920-01-01" max="2018-12-31">
+                    </div>
+                    <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
+                        <label class="genderLabel">Gender *</label>
+                        <div>
+                            <button class="btn btn-outline-secondary" type="button">Male</button>
+                            <button class="btn btn-outline-secondary" type="button">Female</button>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <label>Profile Image</label>
+                        <input type="file" accept="image/*">
+                        <!-- <input type="file" class="form-control-file" style="width: fit-content;"> -->
+                        <small class="form-text text-muted">Select profile image.</small>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <div class="d-flex align-items-center" style="height: 100%;">
+                            <button type="button" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<%- contentFor('script') %>
+    <!-- For scripts -->
+    <script src="/static/common/scripts/profileImage.js"></script>
