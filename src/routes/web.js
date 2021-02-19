@@ -10,6 +10,8 @@ route.use(expressLayout);
 
 route.get("/home", bodyParser, homepageController.home);
 route.get("/", bodyParser, homepageController.get);
+route.get("/profile", bodyParser, homepageController.profile);
+route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
 // route.post("/", bodyParser, homepageController.post);
 
 route.get("/register", bodyParser, homepageController.register);

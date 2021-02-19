@@ -49,5 +49,11 @@ module.exports = {
         // res.send(products);
         res.render("home", {"layout": "template", "username": user.username, products: products});
     },
-
+    profile: (req, res) => {
+        res.render("profile", {"layout": "template"});
+    },
+    adminAdd: (req, res) => {
+        res.render("admin/add", {"layout": "template"});
+    },
+    
 };
