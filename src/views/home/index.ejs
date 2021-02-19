@@ -62,96 +62,10 @@ Home Page
         <h4><i class="bi bi-arrow-down-square-fill"></i></h4>
     </div>
     <div class="row mb-4">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="<%= products[0].images.image %>">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H"><%= products[0].name.substring(0, 20) + (products[0].name.length>20? "..." : "") %></h4>
-                    <p class="homeMid2P">$ <%= products[0].price %></p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-7.jpg">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Leather Sneakers</h4>
-                    <p class="homeMid2P">$50.00</p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-32.jpg">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Leaf Print Shirt</h4>
-                    <p class="homeMid2P">$50.00</p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-10.jpg">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Cross body Bag</h4>
-                    <p class="homeMid2P">$50.00</p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-48.jpg">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Sweatshirt with pocket</h4>
-                    <p class="homeMid2P">$50.00</p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-            <div class="homeParent4">
-                <img class="homeIMGMid2" src="/static/common/images/abd/product-6.jpg">
-                <div class="homeMidDiv2">
-                    <h4 class="homeMid2H">Cotton Floral Print Dress</h4>
-                    <p class="homeMid2P">$50.00</p>
-                    <div class="homeicons d-flex justify-content-center">
-                        <i class="bi bi-eye"></i>
-                        <i class="bi bi-cart-plus-fill"></i>
-                        <i class="bi bi-heart"></i>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+        
+        <% products.forEach(product => { %>
+            <%- include("../item/snippets/item.ejs", {product:product}) %>
+        <% }); %>
+        
     </div>
 </div>

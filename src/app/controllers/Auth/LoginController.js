@@ -27,6 +27,7 @@ module.exports = {
                     role_id: customer.id
                 }
             });
+            
             if(user && User.checkPassword(req.body.password, user.password)){
                 Helper.authenticate(req, user);
                 return res.status(302).redirect("/");
