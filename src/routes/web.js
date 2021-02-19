@@ -17,6 +17,7 @@ route.get("/login", bodyParser, homepageController.login);
 route.get("/orders", bodyParser, homepageController.orders);
 route.get("/RegisterPage.html", bodyParser, homepageController.register);
 route.get("/LoginPage.html", bodyParser, homepageController.login);
+route.get("/mycart", bodyParser, homepageController.mycart);
 
 
 // route.get("/profiles", bodyParser, profileController.list);

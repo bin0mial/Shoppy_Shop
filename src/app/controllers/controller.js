@@ -50,4 +50,7 @@ module.exports = {
         res.render("home", {"layout": "template", "username": user.username, products: products});
     },
 
+    mycart: (req, res) => {
+        res.render("orders/cartPage", {"layout": "template"});
+    },
 };
