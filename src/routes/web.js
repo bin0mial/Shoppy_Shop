@@ -19,7 +19,9 @@ route.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
 route.use(expressLayout);
+route.use(middlewares["SessionMiddleware"]);
 
 // TODO Web routes Written down there as follows
 route.get("/home", bodyParser, homepageController.home);

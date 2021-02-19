@@ -25,7 +25,7 @@ module.exports = {
 
 
     get: (req, res) => {
-        res.render("profile", {"layout": "template", session:req.session});
+        res.render("profile", {"layout": "template"});
     },
 
     register: (req, res) => {
