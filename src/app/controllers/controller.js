@@ -36,8 +36,11 @@ module.exports = {
         res.render("auth/LoginPage",{"layout": "template/template2"});
     },
 
-    orders: (req, res) => {
-        res.render("orders/itemsOrder", {"layout": "template"});
+    orders: async (req, res) => {
+        const product = await Models.product.findOne({where:{slug: req.params.slug}, include:[{model:Models.product_image, as: "images"}]});
+        if(product)
+            return res.render("orders/itemsOrder", {"layout": "template", product:product});
+        return res.status(404).send("Page not found");
     },
 
     home: async (req, res) => {
@@ -57,6 +60,7 @@ module.exports = {
     },
 
     mycart: (req, res) => {
+        
         res.render("orders/cartPage", {"layout": "template"});
     },
 
