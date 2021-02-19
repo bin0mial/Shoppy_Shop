@@ -10,17 +10,28 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
+            this.hasOne(models.User, {as: "user", sourceKey: "user_id", foreignKey: "id"});
             this.hasOne(models.product, {as: "product", sourceKey: "product_id", foreignKey: "id"});
         }
     };
     product_review.init({
         id: {type: DataTypes.BIGINT, autoIncrement: true, primaryKey: true, allowNull: false},
-        rate: {type: DataTypes.FLOAT(1, 1), defaultValue: 0},
+        user_id: {
+            type: DataTypes.BIGINT,
+            after: "id",
+            references: {
+                model: 'users',
+                key: 'id',
+            },
+            onUpdate: 'CASCADE',
+            onDelete: 'SET NULL',
+        },
+        rate: {type: DataTypes.FLOAT(2, 1), defaultValue: 0},
         comment: {type: DataTypes.TEXT},
         product_id:
             {
                 type: DataTypes.BIGINT,
-                after: "id",
+                after: "user",
                 references: {
                     model: 'products',
                     key: 'id',
