@@ -3,7 +3,7 @@ const User = Models.User;
 const Helper = require("./Helpers");
 
 const buildUserFromRequest = async (req) => {
-    const customer = Models.role.findOne({where: {role: "customer"}})
+    const customer = await Models.role.findOne({where: {role: "customer"}})
     return User.build({
         name: req.body.name,
         username: req.body.username,
@@ -34,19 +34,24 @@ module.exports = {
         const errors = validateRegistration(req);
         let isValid = false;
         if(!Object.keys(errors).length) {
-            const user = await buildUserFromRequest(req);
+            let user = await buildUserFromRequest(req);
+
             await user.validate()
-                .then(user => {
-                    user.save();
-                    isValid = true;
+                .then((usr) => {
+                     user = usr.save()
+                        .then(res => res)
+                        .catch(errs => {
+                            errs.errors.forEach(error => {
+                                errors[error.path.substring(User.tableName.length+1)] = error.message.substring(User.tableName.length+1);
+                            });
+                        })
                 })
                 .catch(errs => {
                     errs.errors.forEach(error => {
                         errors[error.path.substring(User.tableName.length+1)] = error.message.substring(User.tableName.length+1);
                     });
-
                 })
-            if(isValid){
+            if(await user){
                 Helper.authenticate(req, user);
                 return res.status(302).redirect("/");
             }
