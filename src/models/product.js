@@ -12,19 +12,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
         this.hasOne(models.User, {as: "owner", sourceKey: "owner_id", foreignKey: "id"})
-        this.belongsTo(models.product_image, {as: "images", foreignKey: "id", targetKey: "product_id"});
-        this.belongsTo(models.product_review, {as: "reviews", foreignKey: "id", targetKey: "product_id"});
-        this.belongsTo(models.cart, {as: "cart", foreignKey: "id", targetKey: "product_id"});
+        this.hasMany(models.product_image, {as: "images", foreignKey: "product_id", targetKey: "id"});
+        this.hasMany(models.product_review, {as: "reviews", foreignKey: "product_id", targetKey: "id"});
+        this.hasMany(models.cart, {as: "cart", foreignKey: "product_id", targetKey: "id"});
     }
   };
   product.init({
     id: {type:DataTypes.BIGINT, autoIncrement:true, primaryKey:true, allowNull:false},
     name: {type: DataTypes.STRING, allowNull:false},
     slug: {type: DataTypes.STRING, allowNull:false, unique:true},
+    stock: {type:DataTypes.INTEGER, allowNull:false, defaultValue:1},
     price: {type: DataTypes.FLOAT, allowNull:false},
     is_available: {type: DataTypes.BOOLEAN, allowNull:false, defaultValue:true},
     description: {type: DataTypes.TEXT, allowNull:true},
-    rate: {type: DataTypes.FLOAT(1,1), defaultValue:0 },
+    rate: {type: DataTypes.FLOAT(2,1), defaultValue:0 },
     owner_id: {
           type: DataTypes.BIGINT,
           after: "id",

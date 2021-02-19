@@ -25,7 +25,6 @@ body {
   align-items: center;
 }
 .featuredImage {
-  max-width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,6 +56,7 @@ body {
 
 #slider {
   width: 440px;
+  justify-content: center;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
@@ -93,7 +93,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Kaushan Script", cursive;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin-bottom: 10px;
 }
 .priceBtn {
@@ -122,14 +122,15 @@ body {
 }
 .ptitle {
   text-align: center;
-  margin-top: -30px;
+  margin-top: 0;
 }
 .featuredImage {
   margin-top: 20px;
 }
 
 .productName {
-  margin-top: 40px;
+  margin-top: 60px;
+  margin-bottom: -10px;
 }
 
 .ratingStars {
@@ -143,4 +144,65 @@ body {
 #selectOpt {
   height: 100%;
   width: 100%;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  height: 1px;
+}
+
+.card_img {
+  height: 240px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.testimonialContainer {
+  border: 2px solid rgba(0, 0, 0, 0.363);
+  background-color: rgb(207, 235, 218);
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.profilePic {
+  width: 100px;
+  height: 100px;
+}
+.testimonialContainer::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.testimonialContainer img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+.testimonialContainer span {
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 15px;
+  color: black;
+}
+.testimonialContainer p {
+  font-size: 18px;
+  font-style: oblique;
+}
+@media (max-width: 500px) {
+  .testimonialContainer {
+    text-align: center;
+  }
+  .testimonialContainer img {
+    margin: auto;
+    float: none;
+    display: block;
+  }
+}
+
+.caroImage {
+  height: 300px;
+  object-fit: cover;
 }
