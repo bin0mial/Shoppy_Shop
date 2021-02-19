@@ -25,14 +25,13 @@ module.exports = {
 
 
     get: (req, res) => {
-        res.render("profile", {"layout": "template"});
+        res.render("profile", {"layout": "template", session:req.session});
     },
 
     register: (req, res) => {
-
         res.render("auth/RegisterPage",{"layout": "template/template2"});
     },
-    
+
     login: (req, res) => {
         res.render("auth/LoginPage",{"layout": "template/template2"});
     },
@@ -42,9 +41,9 @@ module.exports = {
     },
 
     home: async (req, res) => {
-        const user = await User.findOne({where: {username: "abd"}});
+        const user = await User.findOne({where: {id: 1}});
         const products = await Models.product.findAll({ include: [{model:Models.product_image, as: "images"}]});
-        
+
         // console.log(products);
         // res.send(products);
         res.render("home", {"layout": "template", "username": user.username, products: products});

@@ -20,11 +20,17 @@
                                     style="justify-content: center;">
                             </div>
                             <p class="login-card-description">Create an Account</p>
-                            <form action="">
+                            <form method="POST">
                                 <div class="form-group">
                                     <label for="name" class="sr-only">Account Name</label>
-                                    <input type="text" name="name" id="email" class="form-control"
+                                    <input type="text" name="name" id="name" class="form-control"
                                         placeholder="Full Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="sr-only">Account Name</label>
+                                    <input type="text" name="username" id="username" class="form-control"
+                                           placeholder="Username">
                                 </div>
 
                                 <div class="form-group">
@@ -40,13 +46,13 @@
                                 </div>
 
                                 <div class="form-group mb-4">
-                                    <label for="confirm" class="sr-only">Password</label>
-                                    <input type="password" name="confirm" id="confirm" class="form-control"
+                                    <label for="confirm_password" class="sr-only">Password</label>
+                                    <input type="password" name="confirm_password" id="confirm_password" class="form-control"
                                         placeholder="Confirm Password">
                                 </div>
 
                                 <input name="login" id="login" class="btn btn-success btn-block login-btn mb-4"
-                                    type="button" value="Create Account"
+                                    type="submit" value="Create Account"/>
                             </form>
                             <p class="login-card-footer-text">Already have an account? <a
                                     href="./LoginPage.html" class="text-reset">Login here</a></p>
