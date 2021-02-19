@@ -41,9 +41,7 @@ route.post("/register", middlewares["GuestMiddleware"] ,bodyParser, registerCont
 route.get("/login", middlewares["GuestMiddleware"], loginController.get);
 route.post("/login", middlewares["GuestMiddleware"], bodyParser, loginController.post);
 
-route.get("/orders", bodyParser, homepageController.orders);
-route.get("/RegisterPage.html", bodyParser, homepageController.register);
-route.get("/LoginPage.html", bodyParser, homepageController.login);
+route.get("/items/:slug", bodyParser, homepageController.orders);
 route.get("/mycart", bodyParser, homepageController.mycart);
 
 

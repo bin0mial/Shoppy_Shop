@@ -13,15 +13,12 @@
 <%- contentFor("content") %>
     <div class="container" >
         <div id="content-wrapper" class="row">
-		
             <div class="column col-md-4">
-                
-                <div class="productName"> Reebok Almotio 5.0 Running Shoe Navy </div>
+                <div class="productName"> <%= product.name %> </div>
                 <div class="featuredImage">
                     <img id="featured" src="/static/common/images/malik/p21.jpg" alt="Reebok Almotio 5.0 Running Shoe Navy">
                 </div>
                 <div id="slide-wrapper">
-                    
                     <img id="slideLeft" class="arrow" src="/static/common/images/malik/leftArrow.png">
                     <div id="slider">
                         <img class="thumbnail active" src="/static/common/images/malik/p22.jpg" alt="Reebok Almotio 5.0 Running Shoe Navy">
@@ -33,7 +30,7 @@
                 </div>
             </div>
             
-            <div class="column col-md-4">
+            <div class="column col-md-4 pdetails">
                 <h2 class="ptitle">Awesome Shoes</h2>
                 <span class="currentPrice"> $89.99 <span style="color: black;font-size: small;">(in stock)</span></span>
                 <div> <p class="pastPrice" ><s>$120</s>  You save $39.99!</p></div>
@@ -171,20 +168,72 @@
             <hr style="background-color: lightgray; height: 2px; ">
         </div>
 
-        <div class="row reviews" style="display: block;">
-            <div class="testimonialContainer">
-                <img class="profilePic" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
-                <span>James Anderson</span>
-                <p>Shawn is a hard working and comitted individual</p>
-            </div>
+        <h2 class="row" style="display: flex;justify-content: center;align-items: center; text-align: center;"> Customers Reviews</h2>
+        <div class="row" style="max-height: 300 px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                        <p class="text-secondary text-center">37 Minutes Ago</p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Great Supporter</strong></a>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+    
+                       </p>
+                       <div class="clearfix"></div>
+                        <p>Thank you shoppy shop for making this great impact on the ecommerce field!</p>
+                        <p>
+                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                       </p>
+                    </div>
+                </div>
 
-            <div class="testimonialContainer">
-                <img class="profilePic" src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"/>
-                <span>Steve Boulder</span>
-                <p>Shawn is great at managing people</p>
+                    <div class="card card-inner">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                    <p class="text-secondary text-center">15 Minutes Ago</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Compiler</strong></a></p>
+                                    <p>This product made my life better and made me think faster</p>
+                                    <p>
+                                        <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
+                                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <hr>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                    <p class="text-secondary text-center">7 Minutes Ago</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Borland C</strong></a></p>
+                                    <p>I waited so long to find a great product like this, I'm in tears.</p>
+                                    <p>
+                                        <a class="float-right btn btn-outline-primary ml-2">  <i class="fa fa-reply"></i> Reply</a>
+                                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
 
     </div>
 

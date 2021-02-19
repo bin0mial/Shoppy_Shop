@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/common/styles/Register.css">
 
 <%- contentFor("content") %>
+    
     <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
         <div class="container">
             <div class="card login-card">
@@ -16,6 +17,17 @@
                     <div class="col-md-7">
                         <div class="card-body">
                             <div class="brand-wrapper">
+                                
+                                <% if(locals.errors) { %>
+                                    <div class="alert alert-danger ">
+                                        <ul>
+                                    <% Object.keys(errors).forEach(key => { %>
+                                        <li><%= errors[key] %></li>
+                                    <% }) %>
+                                    </ul>
+                                </div>
+                                <% } %>
+                                    
                                 <img src="/static/common/images/malik/logo.png" alt="logo" class="logo"
                                     style="justify-content: center;">
                             </div>
@@ -55,7 +67,7 @@
                                     type="submit" value="Create Account"/>
                             </form>
                             <p class="login-card-footer-text">Already have an account? <a
-                                    href="./LoginPage.html" class="text-reset">Login here</a></p>
+                                    href="/login" class="text-reset">Login here</a></p>
                             <nav class="login-card-footer-nav">
                                 <a href="#!">Terms of use</a>
                                 <a href="#!">Privacy policy</a>
