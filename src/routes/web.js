@@ -27,7 +27,7 @@ route.use(middlewares["SessionMiddleware"]);
 route.get("/home", bodyParser, homepageController.home);
 
 route.get("/", bodyParser, homepageController.get);
-route.get("/profile", bodyParser, homepageController.profile);
+route.get("/profile", middlewares["AuthMiddleware"], bodyParser, homepageController.profile);
 route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
 
 route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);

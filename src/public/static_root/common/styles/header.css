@@ -36,9 +36,14 @@ h5{
     display: inline-block;
 }
 
-nav a:hover{
-    color:  rgb(160, 160, 160) !important;
+
+.logo:hover ,.bi-search:hover ,.bi-person-fill:hover ,.bi-heart-fill:hover , .bi-cart:hover{
+    transition: all 200ms ease-in-out;
+    /* color:  rgb(160, 160, 160) !important; */
+    color:  rgb(121, 121, 121) !important;
 }
+
+
 
 nav a{
     color: white !important;
@@ -51,7 +56,7 @@ nav a{
 .profile{
     margin-right: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -60,4 +65,12 @@ nav a{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+.headerLinkColor{
+    color: #1a334e !important;
+}
+
+.HomeBottonMargin{
+    margin-left: 8px;
 }

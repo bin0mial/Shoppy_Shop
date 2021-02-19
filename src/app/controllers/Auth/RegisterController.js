@@ -3,7 +3,8 @@ const User = Models.User;
 const Helper = require("./Helpers");
 
 const buildUserFromRequest = async (req) => {
-    const customer = Models.role.findOne({where: {role: "customer"}})
+    const customer = await Models.role.findOne({where: {role: "customer"}});
+    console.log(customer);
     return User.build({
         name: req.body.name,
         username: req.body.username,

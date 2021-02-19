@@ -95,6 +95,7 @@
 .homeParent4{
     /* background-color: rgb(82, 2, 6); */
     cursor: pointer;
+    width: 250px;
     height: 380px;
     display: flex;
     flex-direction: column;
@@ -116,13 +117,13 @@
 .homeMidDiv2{
     /* margin-top: 20px; */
     width: 100%;
-    bottom: 2px;
+    bottom: -15px;
     padding: 10px;
     height: 200px;
     position: relative;
     color: white;
     background-color:white;
-    transition: 0.4s all ease-in-out;
+    transition: 0.3s all ease-in-out;
 }
 
 .homeParent4:hover .homeMidDiv2{

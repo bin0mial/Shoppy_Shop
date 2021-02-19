@@ -7,8 +7,32 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end align-middle" id="navbarScroll">
             <div class="profile">
+                <% if(!session.isAuth) { %>
+                    <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
+                    <!-- <div class="dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" 
+                        href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
+                        Hello. Login
+                    </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item headerLinkColor" href="/login">Login</a>
+                            <a class="dropdown-item headerLinkColor" href="/register">Register</a>
+                        </div>
+                    </div> -->
+                    <div class="btn-group HomeBottonMargin">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            Hello. Log In
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item headerLinkColor" href="/login">Log in</a>
+                            <a class="dropdown-item headerLinkColor" href="/register">Register</a>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(session.isAuth) { %>
                 <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
-                <p class="p-prfile-pic">Hello, <%= locals.username %></p>
+                <p class="p-prfile-pic">Hello, <%= session.user.username %></p>
+                <% } %>
             </div>
             <div class="header-icons">
                 <h5>
@@ -21,7 +45,7 @@
                     <a href="#"><i class="bi bi-heart-fill"></i></a>
                 </h5>
                 <h5>
-                    <a href="#"><i class="bi bi-cart"></i></a>
+                    <a href="/orders/cartPage"><i class="bi bi-cart"></i></a>
                 </h5>
             </div>
         </div>

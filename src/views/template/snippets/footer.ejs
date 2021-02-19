@@ -13,10 +13,14 @@
             <div class="col col-lg-4">
                 <div class="links-top">
                     <h6>My Account</h6>
+                    <% if(!session.isAuth) { %>
                     <a href="/login">Log in / Register</a>
+                    <% } %>
+                    <% if(session.isAuth) { %>
                     <a href="#">My Shopping Cart</a>
                     <a href="#">My Orders</a>
                     <a href="#">Account settings</a>
+                    <% } %>
                 </div>
             </div>
             <div class="col col-lg-4">
