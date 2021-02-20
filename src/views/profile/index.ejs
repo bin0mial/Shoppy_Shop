@@ -43,13 +43,9 @@
                 <div class="row">
                     <div class="col col-md-12">
                         <label>Full Name *</label>
-                        <% const names = session.user.name.split(" ") %>
+                        
                         <input type="text" id="name" class="form-control" value="<%= session.user.name %>">
                     </div>
-                    <!-- <div class="col-12 col-md-6">
-                        <label>Second Name *</label>
-                        <input type="text" id="lastName" class="form-control" value="<%= names[1] %>" >
-                    </div> -->
                     <div class="col-12 col-md-12 profileEmail">
                         <label>Email Address *</label>
                         <input type="email" id="userEmail" class="form-control" value="<%= session.user.email %>"

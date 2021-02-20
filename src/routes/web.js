@@ -24,15 +24,16 @@ route.use(expressLayout);
 route.use(middlewares["SessionMiddleware"]);
 
 // TODO Web routes Written down there as follows
-route.get("/home", bodyParser, homepageController.home);
+route.get("/", bodyParser, homepageController.home);
 
-route.get("/", bodyParser, homepageController.get);
+// route.get("/", bodyParser, homepageController.get);
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, homepageController.profile);
 route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
 
-route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
+// route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
 
 // route.post("/", bodyParser, homepageController.post);
+route.get("/logout", bodyParser, loginController.logout); 
 
 // route.get("/register", bodyParser, homepageController.register);
 route.get("/register", middlewares["GuestMiddleware"], registerController.get);
@@ -42,7 +43,7 @@ route.get("/login", middlewares["GuestMiddleware"], loginController.get);
 route.post("/login", middlewares["GuestMiddleware"], bodyParser, loginController.post);
 
 route.get("/items/:slug", bodyParser, homepageController.orders);
-route.get("/mycart", bodyParser, homepageController.mycart);
+route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, homepageController.mycart);
 
 
 // route.get("/profiles", bodyParser, profileController.list);

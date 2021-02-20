@@ -51,7 +51,8 @@ module.exports = {
                         errors[error.path.substring(User.tableName.length+1)] = error.message.substring(User.tableName.length+1);
                     });
                 })
-            if(await user){
+                user = await user;
+            if(user){
                 Helper.authenticate(req, user);
                 return res.status(302).redirect("/");
             }

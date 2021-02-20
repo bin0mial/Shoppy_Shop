@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand logo" href="/home">Shoppy store</a>
+        <a class="navbar-brand logo" href="/">Shoppy store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,16 +9,6 @@
             <div class="profile">
                 <% if(!session.isAuth) { %>
                     <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
-                    <!-- <div class="dropdown show">
-                        <a class="btn btn-secondary dropdown-toggle" 
-                        href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true">
-                        Hello. Login
-                    </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item headerLinkColor" href="/login">Login</a>
-                            <a class="dropdown-item headerLinkColor" href="/register">Register</a>
-                        </div>
-                    </div> -->
                     <div class="btn-group HomeBottonMargin">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                             Hello. Log In
@@ -31,7 +21,18 @@
                 <% } %>
                 <% if(session.isAuth) { %>
                 <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
-                <p class="p-prfile-pic">Hello, <%= session.user.username %></p>
+                
+                <!-- <p>test</p> -->
+                <div class="btn-group HomeBottonMargin">
+                    <div class="btn-group HomeBottonMargin">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <p class="profile-p">Hello, <%= session.user.username %></p>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item headerLinkColor" href="/logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
                 <% } %>
             </div>
             <div class="header-icons">
@@ -45,7 +46,7 @@
                     <a href="#"><i class="bi bi-heart-fill"></i></a>
                 </h5>
                 <h5>
-                    <a href="/orders/cartPage"><i class="bi bi-cart"></i></a>
+                    <a href="/mycart"><i class="bi bi-cart"></i></a>
                 </h5>
             </div>
         </div>
