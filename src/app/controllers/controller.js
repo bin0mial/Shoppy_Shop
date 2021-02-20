@@ -47,13 +47,16 @@ module.exports = {
         const products = await Models.product.findAll({ limit:6,order:[['createdAt','DESC']], include: [{model:Models.product_image, as: "images"}]});
         res.render("home", {"layout": "template", products: products});
     },
+    
+    listProducts: async (req, res) => {
+        const products = await Models.product.findAll({ order:[['createdAt','DESC']], include: [{model:Models.product_image, as: "images"}]});
+        res.render("products", {"layout": "template", products: products});
+    },
 
     profile: (req, res) => {
         res.render("profile", {"layout": "template"});
     },
-    adminAdd: (req, res) => {
-        res.render("admin/add", {"layout": "template/template2"});
-    },
+    
 
     adminEdit: (req, res) => {
         res.render("admin/edit", {"layout": "template/template2"});

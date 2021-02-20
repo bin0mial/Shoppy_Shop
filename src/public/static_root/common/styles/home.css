@@ -37,28 +37,54 @@
     text-align: center;
 }
 
-.homeParent2:hover .homeIMGTop2{
+.homeParent2:hover .homeIMGTop2 {
     left: -10px;
 }
 
 .homeIMGTop2{
     left: -0px;
     /* object-fit: contain; */
-    position: relative;
+    /* position: relative; */
     transition: 0.2s all ease-in-out;
 }
 
+.edit-square{
+    position: relative;
+    left: 0px !important;
+    transition: 0.2s all ease-in-out !important; 
+}
+.homeParent3:hover .edit-square{
+    left: 10px !important;
+}
+
+/* .home-center:hover .edit-square{
+    left: 20px !important;
+} */
+
 .homeTopDiv2{
     /* color: rgb(80, 190, 16); */
-    color: rgb(80, 190, 16);
+    /* color: rgb(80, 190, 16); */
     margin-left: 20px;
     padding: 4px;
     width: 100px;
     position: absolute;
 }
 
+.home-center{
+    margin-bottom: 10px;
+}
+
+.homePTop{
+    font-size: larger;
+    color: #f1faee;
+    /* color: #353535; */
+}
+
+.homeHTop{
+    color: #e63946 !important;
+}
+
 .homeP{
-    /* color: rgb(82, 2, 6); */
     color: rgb(82, 2, 6);
 }
 

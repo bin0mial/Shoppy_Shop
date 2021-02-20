@@ -19,7 +19,7 @@ module.exports = {
             user.gender = data.gender || user.gender;
             if(req.file)
                 user.profile_picture = `${process.env.MEDIA_URL}images/${req.session.user.username}/profile/${req.file.filename}`;
-            const saved = await user.save()
+            const saved = await user.save().catch(console.log)
             if(saved){
                 req.session.user = user;
                 return res.render("profile", {"layout": "template"});
