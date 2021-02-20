@@ -42,7 +42,7 @@ module.exports = {
             return res.render("orders/itemsOrder", {"layout": "template", product:product});
         return res.status(404).send("Page not found");
     },
-
+    
     home: async (req, res) => {
         const products = await Models.product.findAll({ limit:6,order:[['createdAt','DESC']], include: [{model:Models.product_image, as: "images"}]});
         res.render("home", {"layout": "template", products: products});
