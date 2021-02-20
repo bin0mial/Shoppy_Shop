@@ -1,0 +1,173 @@
+<%- contentFor("title") %>
+Admin
+
+<%- contentFor("styles") %>
+<link rel="stylesheet" href="/static/common/styles/adminLogin.css">
+
+<%- contentFor("content") %>
+<div class="sidebar">
+    <div class="admin_info">
+        <div class="admin_image" style="display: flex;
+        flex-direction: column;
+        align-items: center;">
+            <img src="../../public/static_root/common/images/abd/profile.jpg"  class="adminImg" alt="">
+        </div>
+        <a href="#home" class="tablinks" onclick="openPage(event, 'Home')"><i class="fa fa-fw fa-home Home" ></i> Home</a>
+        <a href="#products" class="tablinks" onclick="openPage(event, 'Products')"><i class="fa fa-fw fa-truck"></i> Products </a>
+        <a href="#clients" class="tablinks" onclick="openPage(event, 'Orders')"><i class="fa fa-fw fa-user"></i> Orders</a>
+    </div>
+    <div class="controllers">
+        <a href="#maintenance" ><i class="fa fa-fw fa-wrench"></i> Maintenace</a>
+        <a href="#mail"><i class="fa fa-fw fa-envelope"></i> Mail Box</a>
+        <a href="#calendar"><i class="fa fa-fw fa-calendar"></i> Calendar</a>
+        <a href="#alert"><i class="fa fa-fw fa-bell"></i> Alerts</a>
+        <a href="#visits"><i class="fa fa-fw fa-map-marker"></i> Visits</a>
+        <a href="#contacts"><i class="fa fa-fw fa-address-book"></i> Contacts</a>
+        <a href="#contacts"><i class="fa fa-fw fa-newspaper-o"></i> Pages</a>
+        <a href="#settings"><i class="fa fa-fw fa-gears"></i> Settings</a>
+        <a href="#settings"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Log Out</a>
+    </div>
+    
+</div>
+
+<div class="main">
+    <h2>Welcome Back Admin!</h2>    
+    <div  id="Home" class="tabcontent">
+    <!-- This is the first page -->
+    </div>
+    
+    <!-- This is the second page -->
+    <div id="Products" class="tabcontent" style="display: none;">
+        <h3>Paris</h3>
+        <p>Paris is the capital of France.</p>
+        <p>This is the second page ya john</p>
+    </div>
+    
+
+    <!-- This is the third page -->
+    <div id="Orders" class="tabcontent" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="row p-3">
+                                <div class="col-md-6">
+                                    <img src="/static/common/images/malik/Linux.jpg" style="height: 60px;border-radius: 50%;">
+                                </div>
+        
+                                <div class="col-md-6 text-right">
+                                    <p class="font-weight-bold mb-1">Invoice #777</p>
+                                    <p class="text-muted">Due to: 4 Dec, 2019</p>
+                                </div>
+                            </div>
+        
+                            <hr class="my-5">
+        
+                            <div class="row pb-3 p-3">
+                                <div class="col-md-6">
+                                    <p class="font-weight-bold mb-4">Client Information</p>
+                                    <p class="mb-1">Mint 20.0, Mr Trovalds</p>
+                                    <p>Acme Inc</p>
+                                    <p class="mb-1">Helsinki, Finland</p>
+                                    <p class="mb-1">6781 Terminal St</p>
+                                </div>
+        
+                                <div class="col-md-6 text-right">
+                                    <p class="font-weight-bold mb-4">Payment Details</p>
+                                    <p class="mb-1"><span class="text-muted">VAT: </span> 1425782</p>
+                                    <p class="mb-1"><span class="text-muted">VAT ID: </span> 10253642</p>
+                                    <p class="mb-1"><span class="text-muted">Payment Type: </span> Root</p>
+                                    <p class="mb-1"><span class="text-muted">Name: </span> Linux Mint</p>
+                                </div>
+                            </div>
+        
+                            <div class="row p-3">
+                                <div class="col-md-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-0 text-uppercase small font-weight-bold">ID</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Item</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Description</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Unit Cost</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Software</td>
+                                                <td>LTS Versions</td>
+                                                <td>21</td>
+                                                <td>$321</td>
+                                                <td>$3452</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Software</td>
+                                                <td>Support</td>
+                                                <td>234</td>
+                                                <td>$6356</td>
+                                                <td>$23423</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Software</td>
+                                                <td>Sofware Collection</td>
+                                                <td>4534</td>
+                                                <td>$354</td>
+                                                <td>$23434</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+        
+                            <div class="d-flex flex-row-reverse bg-dark text-white p-3">
+                                <div class="py-3 px-5 text-right">
+                                    <div class="mb-2">Grand Total</div>
+                                    <div class="h2 font-weight-light">$234,234</div>
+                                </div>
+        
+                                <div class="py-3 px-5 text-right">
+                                    <div class="mb-2">Discount</div>
+                                    <div class="h2 font-weight-light">10%</div>
+                                </div>
+        
+                                <div class="py-3 px-5 text-right">
+                                    <div class="mb-2">Sub - Total amount</div>
+                                    <div class="h2 font-weight-light">$32,432</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+        
+        
+        
+        </div>
+    </div>
+</div>
+
+
+<!-- This is the script of changing the pages -->
+<script>
+    function openPage(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+</script>

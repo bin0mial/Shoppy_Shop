@@ -35,7 +35,9 @@ module.exports = (sequelize, DataTypes) => {
             },
             onUpdate: 'CASCADE',
             onDelete: 'SET NULL',
-        }
+        },
+        is_checkout: {type: DataTypes.BOOLEAN, defaultValue: false},
+        review: {type: DataTypes.BOOLEAN, defaultValue: false}
 
     }, {
         sequelize,

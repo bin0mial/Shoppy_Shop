@@ -1,5 +1,7 @@
 'use strict';
 
+const slugify = require('slugify')
+
 const {
   Model
 } = require('sequelize');
@@ -20,12 +22,16 @@ module.exports = (sequelize, DataTypes) => {
   product.init({
     id: {type:DataTypes.BIGINT, autoIncrement:true, primaryKey:true, allowNull:false},
     name: {type: DataTypes.STRING, allowNull:false},
-    slug: {type: DataTypes.STRING, allowNull:false, unique:true},
+    slug: {type: DataTypes.STRING, allowNull:false, unique:true,
+        set(val) {
+            this.setDataValue("slug", slugify(val, {lower:true, strict: true}))
+        }
+    },
     stock: {type:DataTypes.INTEGER, allowNull:false, defaultValue:1},
     price: {type: DataTypes.FLOAT, allowNull:false},
     is_available: {type: DataTypes.BOOLEAN, allowNull:false, defaultValue:true},
     description: {type: DataTypes.TEXT, allowNull:true},
-    rate: {type: DataTypes.FLOAT(2,1), defaultValue:0 },
+    rate: {type: DataTypes.FLOAT(2,1), defaultValue:0, validate:{min: 0.0, max:5.0}},
     owner_id: {
           type: DataTypes.BIGINT,
           after: "id",
@@ -41,9 +47,5 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'product',
   });
 
-  // product.rate.validate = {
-  //   min:0.0, max:5.0
-  // }
-  //   console.log(product.associate())
   return product;
 };

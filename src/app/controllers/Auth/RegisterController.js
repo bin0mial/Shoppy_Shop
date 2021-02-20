@@ -1,13 +1,18 @@
+"use strict";
+
 const Models = require("../../../models");
 const User = Models.User;
 const Helper = require("./Helpers");
+const ValidateInstanceSave = require("../../../Helpers/ValidateModelSave");
+const fs = require("fs");
+const path = require('path');
 
 const buildUserFromRequest = async (req) => {
     const customer = await Models.role.findOne({where: {role: "customer"}})
     return User.build({
         name: req.body.name,
-        username: req.body.username,
-        email: req.body.email,
+        username: req.body.username.toLowerCase(),
+        email: req.body.email.toLowerCase(),
         password: req.body.password,
         role_id: customer.id,
     })
@@ -31,33 +36,19 @@ module.exports = {
     },
 
     post: async (req, res) => {
-        const errors = validateRegistration(req);
-        let isValid = false;
-        if(!Object.keys(errors).length) {
+        let allErrors = validateRegistration(req);
+        if(!Object.keys(allErrors).length) {
             let user = await buildUserFromRequest(req);
-
-            await user.validate()
-                .then((usr) => {
-                        user = usr.save()
-                        .then(res => res)
-                        .catch(errs => {
-                            errs.errors.forEach(error => {
-                                errors[error.path.substring(User.tableName.length+1)] = error.message.substring(User.tableName.length+1);
-                            });
-                        })
-                })
-                .catch(errs => {
-                    errs.errors.forEach(error => {
-                        errors[error.path.substring(User.tableName.length+1)] = error.message.substring(User.tableName.length+1);
-                    });
-                })
-                user = await user;
-            if(user){
+            const {item, errors} = await ValidateInstanceSave.validateSave(user, User);
+            allErrors = errors;
+            if(item){
+                const dir = path.join(path.dirname(require.main.filename), "src", "public", "media_root", "images", user.username);
+                if (!fs.existsSync(dir)) fs.mkdirSync(dir);
                 Helper.authenticate(req, user);
                 return res.status(302).redirect("/");
             }
         }
 
-        return res.render("auth/RegisterPage",{"layout": "template/template2", errors: errors});
+        return res.render("auth/RegisterPage",{"layout": "template/template2", errors: allErrors});
     }
 }
