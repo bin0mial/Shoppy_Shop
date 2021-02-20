@@ -23,6 +23,17 @@
                             <input type="number" name="price" id="name" min="1" class="form-control bg-light">
                             <label class="text-warning addProductLabel">Description:</label>
                             <textarea class="form-control bg-light" name="description" rows="3"></textarea>
+                            <br>
+                            <div class="btn-group btn-group-toggle adminEditAv" data-toggle="buttons">
+                                <h5 class="text-warning" style="margin-right: 10px;">*Availability:</h5>
+                                <label class="btn btn-info active">
+                                <input type="radio" value="1" name="is_available" checked>Yes
+                                </label>
+                                <label class="btn btn-info">
+                                <input type="radio" value="0" name="is_available">No
+                                </label>
+                            </div>
+                            <br>
                             <label class="text-warning addProductLabel">*Stock:</label>
                             <input type="number" name="stock" id="name" min="1" class="form-control bg-light">
                         </div>
@@ -33,11 +44,11 @@
                                 <input class="productImg" type="file" accept="image/*" name="product_picture">
                                 <input class="productImg" type="file" accept="image/*" name="product_picture">
                                 <!-- <label for="1">Imagem 1</label> -->
-                                <input class="productImg" type="file" name="imagem[]" id="1"/>
+                                <!-- <input class="productImg" type="file" name="imagem[]" id="1"/> -->
                                 <!-- <label for="1">Imagem 2</label> -->
-                                <input class="productImg" type="file" name="imagem[]" id="2" />
+                                <!-- <input class="productImg" type="file" name="imagem[]" id="2" /> -->
                                 <!-- <label for="1">Imagem 3</label> -->
-                                <input class="productImg" type="file" name="imagem[]" id="3" />
+                                <!-- <input class="productImg" type="file" name="imagem[]" id="3" /> -->
                             </div>
                         </div>
                         <div class="productSubmitBtn w-100">

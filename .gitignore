@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# Media files
+src/public/media_root/images/
+src/public/media_root/videos/

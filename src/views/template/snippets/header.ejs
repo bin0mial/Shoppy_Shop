@@ -20,13 +20,13 @@
                     </div>
                 <% } %>
                 <% if(session.isAuth) { %>
-                <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
+                <h3><img src="<%= session.user.profile_picture %>"/></h3>
                 
                 <!-- <p>test</p> -->
                 <div class="btn-group HomeBottonMargin">
                     <div class="btn-group HomeBottonMargin">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <p class="profile-p">Hello, <%= session.user.username %></p>
+                            <p class="profile-p">Hello, <%= session.user.name %></p>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item headerLinkColor" href="/logout">Logout</a>

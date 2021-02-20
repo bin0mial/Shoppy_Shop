@@ -31,7 +31,7 @@
                             <i class="bi bi-caret-right profile-icon"></i>
                         </div>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action noBORDER-RL">
+                    <a href="/logout" class="list-group-item list-group-item-action noBORDER-RL">
                         <div class="d-flex flex-row justify-content-between">
                             <p class="profileP">Logout</p>
                             <i class="bi bi-caret-right profile-icon"></i>
@@ -42,6 +42,11 @@
             <div class="col-12 col-md-8">
                 <form method="POST" enctype="multipart/form-data">
                     <div class="row">
+                        <div class="col col-md-12">
+                            <label>User Name *</label>
+                            <input type="text" name="username" id="name" class="form-control"
+                                value="<%= session.user.username %>" disabled >
+                        </div>
                         <div class="col col-md-12">
                             <label>Full Name *</label>
                             <input type="text" name="name" id="name" class="form-control"

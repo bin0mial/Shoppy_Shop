@@ -1,5 +1,6 @@
 const Models = require("../../models");
 
+// Homepage
 module.exports = {
     home: async (req, res) => {
         const products = await Models.product.findAll({

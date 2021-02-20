@@ -6,6 +6,7 @@ const validator = require("../../../Helpers/ValidateRequestData");
 const Product = Models.product;
 
 module.exports = {
+    // Get all User carts
     get: async (req, res) => {
         const userCart = await Models.cart.findAll({
             where: {customer_id: req.session.user.id},
@@ -15,6 +16,7 @@ module.exports = {
         });
         res.render("orders/cartPage", {"layout": "template",carts: userCart});
     },
+    // Post to cart
     post: async (req, res) => {
         const required = ["product_id", "quantity"];
         const {isValid, data} = validator.validateExistance(required);

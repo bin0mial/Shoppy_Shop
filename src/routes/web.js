@@ -12,6 +12,8 @@ const registerController = require("../app/controllers/Auth/RegisterController")
 const loginController = require("../app/controllers/Auth/loginController")
 const homepageController = require("../app/controllers/controller");
 const ProfileController = require('../app/controllers/User/ProfileController');
+const controller = require('../app/controllers/controller');
+const ProductController = require('../app/controllers/Product/ProductController');
 
 
 route.use(cookieParser());
@@ -36,13 +38,15 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
 route.post("/profile", middlewares["AuthMiddleware"], middlewares["UploadPhotoMiddleware"].single('profile_picture'), bodyParser, ProfileController.update);
 
-route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
+route.get("/admin/addproduct", bodyParser, ProductController.adminAdd);
+route.post("/admin/addproduct", bodyParser, ProductController.adminAdd);
 route.get("/admin/editproduct", bodyParser, homepageController.adminEdit);
 
 // route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
 
 // route.post("/", bodyParser, homepageController.post);
 route.get("/logout", bodyParser, loginController.logout);
+route.get("/listProducts", bodyParser, homepageController.listProducts);
 
 // route.get("/register", bodyParser, homepageController.register);
 route.get("/register", middlewares["GuestMiddleware"], registerController.get);
@@ -51,7 +55,7 @@ route.post("/register", middlewares["GuestMiddleware"] ,bodyParser, registerCont
 route.get("/login", middlewares["GuestMiddleware"], loginController.get);
 route.post("/login", middlewares["GuestMiddleware"], bodyParser, loginController.post);
 
-route.get("/items/:slug", bodyParser, homepageController.orders);
+route.get("/items/:slug", bodyParser, ProductController.get);
 route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, homepageController.mycart);
 
 route.get("/admin", bodyParser, homepageController.admin);
