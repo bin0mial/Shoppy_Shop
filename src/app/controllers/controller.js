@@ -44,12 +44,8 @@ module.exports = {
     },
 
     home: async (req, res) => {
-        const user = await User.findOne({where: {id: 1}});
         const products = await Models.product.findAll({ limit:6,order:[['createdAt','DESC']], include: [{model:Models.product_image, as: "images"}]});
-
-        // console.log(products);
-        // res.send(products);
-        res.render("home", {"layout": "template", "username": user.username, products: products});
+        res.render("home", {"layout": "template", products: products});
     },
 
     profile: (req, res) => {
@@ -59,11 +55,11 @@ module.exports = {
         res.render("admin/add", {"layout": "template"});
     },
 
-    mycart: (req, res) => {  
+    mycart: (req, res) => {
         res.render("orders/cartPage", {"layout": "template"});
     },
 
-    admin: (req, res) => {  
+    admin: (req, res) => {
         res.render("orders/adminLogin", {"layout": "template/template2"});
     },
 

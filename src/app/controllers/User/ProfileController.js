@@ -1,24 +1,31 @@
 'use strict';
 
-const Models = require("../../../models");
+const User = require("../../../models").User;
 const validator = require("../../../Helpers/ValidateRequestData");
 
 module.exports = {
     get: (req, res) =>{
         res.render("profile", {"layout": "template"});
     },
-    update: (req, res) => {
+    update: async (req, res) => {
         const required = ["name", "email", "address", "date_of_birth", "gender"];
-        const optional = ["picture"];
         const {isValid, data} = validator.validateExistance(req, required);
-        console.log(data);
-        console.log(isValid);
         if(isValid){
-            // TODO Update user data.
-            console.log(data);
+            const user = await User.findOne({where:{id: req.session.user.id}});
+            user.name = data.name || user.name;
+            user.email = data.email || user.email;
+            user.address = data.address || null;
+            user.date_of_birth = data.date_of_birth || null;
+            user.gender = data.gender || user.gender;
+            if(req.file)
+                user.profile_picture = `${process.env.MEDIA_URL}images/${req.session.user.username}/profile/${req.file.filename}`;
+            const saved = await user.save()
+            if(saved){
+                req.session.user = user;
+                return res.render("profile", {"layout": "template"});
+            }
         }
-        // TODO if isnt valid
-        res.render("profile", {"layout": "template"});
+        return res.render("profile", {"layout": "template", errors:"Invalid data provided"});
     },
 
 }

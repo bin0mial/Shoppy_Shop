@@ -7,8 +7,8 @@ const model = require("./models")
 module.exports = app => {
 
     // App public directories
-    app.use("/static", express.static(path.join(__dirname, "/public/static_root")));
-    app.use("/media", express.static(path.join(__dirname, "/public/media_root")));
+    app.use(process.env.STATIC_URL, express.static(path.join(__dirname, "/public/static_root")));
+    app.use(process.env.MEDIA_URL, express.static(path.join(__dirname, "/public/media_root")));
 
     // Template Engine and Views Directory
     app.set('views', path.join(__dirname, '/views'));

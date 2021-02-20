@@ -23,7 +23,7 @@ module.exports = {
             include: [{model: Models.role, as: "role"}]
         });
         if (isValid && user.role.role !== "admin") {
-            const product = Product.findOne({where: {id: data.product_id, stock: {[Op.gte]: data.quantity}}});
+            const product = Product.findOne({where: {id: data.product_id, is_available:true , stock: {[Op.gte]: data.quantity}}});
             if (product) {
                 const cart = await Models.cart.create({
                     product_id: product.id,
@@ -32,6 +32,7 @@ module.exports = {
                 });
                 if (cart) {
                     product.stock -= data.quantity;
+                    product.is_available = product.is_available? data.quantity>0: false;
                     product.save();
                     return res.render("orders/cartPage", {"layout": "template", message: "Product added to stock successfully!"});
                 }

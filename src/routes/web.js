@@ -34,13 +34,14 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 
 // route.get("/", bodyParser, homepageController.get);
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
-route.post("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.update);
+route.post("/profile", middlewares["AuthMiddleware"], middlewares["UploadPhotoMiddleware"].single('profile_picture'), bodyParser, ProfileController.update);
+
 route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
 
 // route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
 
 // route.post("/", bodyParser, homepageController.post);
-route.get("/logout", bodyParser, loginController.logout); 
+route.get("/logout", bodyParser, loginController.logout);
 
 // route.get("/register", bodyParser, homepageController.register);
 route.get("/register", middlewares["GuestMiddleware"], registerController.get);
