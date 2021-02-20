@@ -14,7 +14,7 @@ const homepageController = require("../app/controllers/controller");
 const ProfileController = require('../app/controllers/User/ProfileController');
 const controller = require('../app/controllers/controller');
 const ProductController = require('../app/controllers/Product/ProductController');
-
+const AdminProductPage = require('../app/controllers/Admin/ProductController');
 
 route.use(cookieParser());
 route.use(session({
@@ -38,9 +38,10 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
 route.post("/profile", middlewares["AuthMiddleware"], middlewares["UploadPhotoMiddleware"].single('profile_picture'), bodyParser, ProfileController.update);
 
-route.get("/admin/addproduct", bodyParser, ProductController.adminAdd);
-route.post("/admin/addproduct", bodyParser, ProductController.adminAdd);
-route.get("/admin/editproduct", bodyParser, homepageController.adminEdit);
+route.get("/admin/addproduct", bodyParser, AdminProductPage.getAddPage);
+route.post("/admin/addproduct", bodyParser, AdminProductPage.addProduct);
+route.get("/admin/editproduct/:slug", bodyParser, AdminProductPage.getUpdatePage);
+route.post("/admin/editproduct/:slug", bodyParser, AdminProductPage.updateProduct);
 
 // route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
 

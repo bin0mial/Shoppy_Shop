@@ -15,14 +15,14 @@
                         <div class="col-lg-3"></div>
                         <div class="col col-lg-6">
                             <h2 class="H2">Edit product:</h2>
-                            <label class="text-warning addProductLabel">*Owner ID:</label>
-                            <input type="text" name="owner_id" id="name" class="form-control bg-light">
                             <label class="text-warning addProductLabel">*Product Name:</label>
-                            <input type="text" name="name" id="name" class="form-control bg-light">
+                            <input type="text" class="form-control bg-light" value="<%= product.name %>" disabled>
                             <label class="text-warning addProductLabel">*Price:-$</label>
-                            <input type="number" name="price" id="name" min="1" class="form-control bg-light">
+                            <input type="number" name="price" id="name" min="1" 
+                                class="form-control bg-light" value="<%= product.price %>">
                             <label class="text-warning addProductLabel">Description:</label>
-                            <textarea class="form-control bg-light" name="description" rows="3"></textarea>
+                            <textarea class="form-control bg-light" name="description" 
+                                rows="3"> <%= product.description %> </textarea>
                             <br>
                             <div class="btn-group btn-group-toggle adminEditAv" data-toggle="buttons">
                                 <h5 class="text-warning" style="margin-right: 10px;">*Availability:</h5>
@@ -35,7 +35,8 @@
                             </div>
                             <br>
                             <label class="text-warning addProductLabel">*Stock:</label>
-                            <input type="number" name="stock" id="name" min="1" class="form-control bg-light">
+                            <input type="number" name="stock" id="name" min="1" 
+                                class="form-control bg-light" value="<%= product.stock %>">
                         </div>
                         <div class="productSubmitBtn w-100">
                             <button type="submit" class="btn btn-primary w-50 btn-md"

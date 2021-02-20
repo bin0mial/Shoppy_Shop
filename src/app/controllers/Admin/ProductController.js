@@ -7,12 +7,12 @@ const ValidateInstanceSave = require("../../../Helpers/ValidateModelSave")
 
 module.exports = {
     getAddPage: async (req, res) => {
-        res.render("admin/add", {"layout": "template"});
+        res.render("admin/add", {"layout": "template/template2"});
     },
     getUpdatePage: async (req, res) => {
         const product = await Product.findOne({where: {slug: req.params.slug, is_available: true}});
         if (product)
-            return res.render("orders/itemsOrder", {"layout": "template", product: product});
+            return res.render("admin/edit", {"layout": "template/template2", product: product});
         return res.status(404).send("Page not found");
     },
     addProduct: async (req, res) => {
@@ -48,7 +48,7 @@ module.exports = {
                 const isSaved = await product.save();
                 if (isSaved) {
                     // TODO
-                    return res.render("profile", {"layout": "template"});
+                    return res.render("admin/edit", {"layout": "template/template2"});
                 }
             }
         }
