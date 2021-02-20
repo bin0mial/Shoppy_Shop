@@ -56,7 +56,11 @@ module.exports = {
         res.render("profile", {"layout": "template"});
     },
     adminAdd: (req, res) => {
-        res.render("admin/add", {"layout": "template"});
+        res.render("admin/add", {"layout": "template/template2"});
+    },
+
+    adminEdit: (req, res) => {
+        res.render("admin/edit", {"layout": "template/template2"});
     },
 
     mycart: (req, res) => {

@@ -36,6 +36,7 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
 route.post("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.update);
 route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
+route.get("/admin/editproduct", bodyParser, homepageController.adminEdit);
 
 // route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);
 

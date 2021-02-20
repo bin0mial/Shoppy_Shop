@@ -1,15 +1,53 @@
 <%- contentFor('title') %>
     Add Product
 
-<%- contentFor("styles") %>
-<!-- For CSS -->
-<link rel="stylesheet" href="/static/common/styles/adminAdd.css">
+    <%- contentFor("styles") %>
+        <!-- For CSS -->
+        <link rel="stylesheet" href="/static/common/styles/adminAdd.css">
 
 
 
 <%- contentFor('content') %>
     <div class="container">
-
+        <div class="mainAddProduct bg-secondary" style="margin-top: 50px;">
+            <form method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h2 class="addH2">Adding New product:</h2>
+                            <label class="text-warning addProductLabel">*Owner ID:</label>
+                            <input type="text" name="owner_id" id="name" class="form-control bg-light">
+                            <label class="text-warning addProductLabel">*Product Name:</label>
+                            <input type="text" name="name" id="name" class="form-control bg-light">
+                            <label class="text-warning addProductLabel">*Price:-$</label>
+                            <input type="number" name="price" id="name" min="1" class="form-control bg-light">
+                            <label class="text-warning addProductLabel">Description:</label>
+                            <textarea class="form-control bg-light" name="description" rows="3"></textarea>
+                            <label class="text-warning addProductLabel">*Stock:</label>
+                            <input type="number" name="stock" id="name" min="1" class="form-control bg-light">
+                        </div>
+                        <div class="col col-lg-6">
+                            <h2 class="addH2 productImage">Add Image:</h2>
+                            <div class="productImgs">
+                                <input class="productImg" type="file" accept="image/*" name="product_picture">
+                                <input class="productImg" type="file" accept="image/*" name="product_picture">
+                                <input class="productImg" type="file" accept="image/*" name="product_picture">
+                                <!-- <label for="1">Imagem 1</label> -->
+                                <input class="productImg" type="file" name="imagem[]" id="1"/>
+                                <!-- <label for="1">Imagem 2</label> -->
+                                <input class="productImg" type="file" name="imagem[]" id="2" />
+                                <!-- <label for="1">Imagem 3</label> -->
+                                <input class="productImg" type="file" name="imagem[]" id="3" />
+                            </div>
+                        </div>
+                        <div class="productSubmitBtn w-100">
+                            <button type="submit" class="btn btn-primary w-50 btn-md"
+                            style="margin-top: 8px;">Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
 
