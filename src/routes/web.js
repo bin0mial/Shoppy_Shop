@@ -7,6 +7,7 @@ const bodyParser = require("body-parser").urlencoded({extended: false});
 const expressLayout = require("express-ejs-layouts");
 const middlewares = require("../app/middlewares");
 
+const cartController = require("../app/controllers/User/CartController");
 const registerController = require("../app/controllers/Auth/RegisterController")
 const loginController = require("../app/controllers/Auth/loginController")
 const homepageController = require("../app/controllers/controller");
@@ -24,6 +25,9 @@ route.use(expressLayout);
 route.use(middlewares["SessionMiddleware"]);
 
 // TODO Web routes Written down there as follows
+
+route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.get);
+
 route.get("/home", bodyParser, homepageController.home);
 
 route.get("/", bodyParser, homepageController.get);
