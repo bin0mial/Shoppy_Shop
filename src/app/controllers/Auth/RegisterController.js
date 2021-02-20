@@ -38,7 +38,7 @@ module.exports = {
 
             await user.validate()
                 .then((usr) => {
-                     user = usr.save()
+                        user = usr.save()
                         .then(res => res)
                         .catch(errs => {
                             errs.errors.forEach(error => {

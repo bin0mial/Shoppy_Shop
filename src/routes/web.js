@@ -11,6 +11,7 @@ const cartController = require("../app/controllers/User/CartController");
 const registerController = require("../app/controllers/Auth/RegisterController")
 const loginController = require("../app/controllers/Auth/loginController")
 const homepageController = require("../app/controllers/controller");
+const ProfileController = require('../app/controllers/User/ProfileController');
 
 
 route.use(cookieParser());
@@ -32,7 +33,8 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 
 
 // route.get("/", bodyParser, homepageController.get);
-route.get("/profile", middlewares["AuthMiddleware"], bodyParser, homepageController.profile);
+route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
+route.post("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.update);
 route.get("/admin/addproduct", bodyParser, homepageController.adminAdd);
 
 // route.get("/", bodyParser, middlewares["AuthMiddleware"], homepageController.get);

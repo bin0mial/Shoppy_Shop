@@ -11,9 +11,14 @@ module.exports = {
         const required = ["name", "email", "address", "date_of_birth", "gender"];
         const optional = ["picture"];
         const {isValid, data} = validator.validateExistance(req, required);
+        console.log(data);
+        console.log(isValid);
         if(isValid){
             // TODO Update user data.
+            console.log(data);
         }
         // TODO if isnt valid
-    }
+        res.render("profile", {"layout": "template"});
+    },
+
 }
