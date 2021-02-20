@@ -64,7 +64,10 @@ module.exports = {
     },
 
     admin: (req, res) => {
-        res.render("orders/adminLogin", {"layout": "template/template2"});
+        res.render("admin", {"layout": "template/admin"});
     },
 
+    adminOrders: (req, res) => {
+        res.render("admin/orders", {"layout": "template/admin"});
+    },
 };

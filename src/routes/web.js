@@ -55,6 +55,7 @@ route.get("/items/:slug", bodyParser, homepageController.orders);
 route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, homepageController.mycart);
 
 route.get("/admin", bodyParser, homepageController.admin);
+route.get("/admin/orders", bodyParser, homepageController.adminOrders);
 
 // route.get("/profiles", bodyParser, profileController.list);
 // route.post("/", bodyParser, homepageController.post);
