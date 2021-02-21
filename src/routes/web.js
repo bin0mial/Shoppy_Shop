@@ -39,6 +39,7 @@ route.get("/cart", middlewares["AuthMiddleware"],  bodyParser, cartController.ge
 
 // route.get("/", bodyParser, homepageController.get);
 route.get("/profile", middlewares["AuthMiddleware"], bodyParser, ProfileController.get);
+route.get("/profile/orders", middlewares["AuthMiddleware"], bodyParser, CartController.getCheckedout);
 route.post("/profile", middlewares["AuthMiddleware"], middlewares["UploadPhotoMiddleware"].single('profile_picture'), bodyParser, ProfileController.update);
 
 // Admin Section

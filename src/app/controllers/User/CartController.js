@@ -7,9 +7,20 @@ const Product = Models.product;
 
 module.exports = {
     // Get all User carts
+    getCheckedout: async (req, res) => {
+        const userCart = await Models.cart.findAll({
+            where: {customer_id: req.session.user.id, is_checkout: true},
+            include: [
+                {model: Models.product, as: "product", include:[
+                    {model: Models.product_image, as: "images"}
+                ]}
+            ]
+        });
+        res.render("profile/userOrders", {"layout": "template",carts: userCart});
+    },
     get: async (req, res) => {
         const userCart = await Models.cart.findAll({
-            where: {customer_id: req.session.user.id},
+            where: {customer_id: req.session.user.id, is_checkout: false},
             include: [
                 {model: Models.product, as: "product", include:[
                     {model: Models.product_image, as: "images"}
