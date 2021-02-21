@@ -70,9 +70,9 @@
       <div class="row row1">
         <div class="font-size-xs ratingStars">
           <% for(let i=0; i<5; i++){ %> <% if(product.rate>i){ %>
-            <span> <i class="fas fa-star" style="color: gold"> </i></span>
+          <span> <i class="fas fa-star" style="color: gold"> </i></span>
           <% } else { %>
-            <span> <i class="fas fa-star" style="color: lightgray"> </i></span>
+          <span> <i class="fas fa-star" style="color: lightgray"> </i></span>
           <% } %> <% } %>
           <div style="font-size: smaller; text-align: center">
             reviews(<%= product.reviews.length %>)
@@ -250,7 +250,89 @@
   <div class="row separator">
     <hr style="background-color: lightgray; height: 2px" />
   </div>
+  <div class="card">
+    
+  <div class="feedback form">
+    <h2
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+    <% if(locals.reviewApplicable) { %>
+      Write a Review
+    </h2>
+    <form id="rating" method="post">
+      <input type="hidden" name="product_id" value="<%= product.id %>"/>
+      <div class="row form-group row1">
+        <div class="col-md-10">
+          <span style="float: right">
+            <div class="form-group col">
+              <fieldset class="rating">
+                <input
+                  name="rate"
+                  type="radio"
+                  id="rating5"
+                  value="5"
+                />
+                <label for="rating5" title="5 stars">☆</label>
 
+                <input
+                  name="rate"
+                  type="radio"
+                  id="rating4"
+                  value="4"
+                />
+                <label for="rating4" title="4 stars">☆</label>
+
+                <input
+                  name="rate"
+                  type="radio"
+                  id="rating3"
+                  value="3"
+                />
+                <label for="rating3" title="3 stars">☆</label>
+
+                <input
+                  name="rate"
+                  type="radio"
+                  id="rating2"
+                  value="2"
+                  checked="checked"
+                />
+                <label for="rating2" title="2 stars">☆</label>
+
+                <input
+                  name="rate"
+                  type="radio"
+                  id="rating1"
+                  value="1"
+                />
+                <label for="rating1" title="1 stars">☆</label>
+              </fieldset>
+            </div>
+          </span>
+          <span>
+            <textarea
+              name="comment"
+              style="resize: none; width: 80%; margin-left: 10%;"
+              class="form-control"
+              placeholder="Your reviews are what help us improve our quality."
+              rows="4"
+            ></textarea>
+          </span>
+          <button class="btn btn-success" style="float: right">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  <% } %>
+  <div class="row separator">
+    <hr style="background-color: lightgray; height: 2px" />
+  </div>
   <h2
     class="row"
     style="
@@ -265,9 +347,8 @@
   <div class="row" style="max-height: 300 px">
     <div class="card">
       <div class="card-body">
-          <% product.reviews.forEach(function(review){ %>
-            <%- include("./snippets/review.ejs", {review: review}) -%>
-          <% }) %>
+        <% product.reviews.forEach(function(review){ %> <%-
+        include("./snippets/review.ejs", {review: review}) -%> <% }) %>
       </div>
     </div>
   </div>

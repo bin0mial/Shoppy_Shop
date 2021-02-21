@@ -12,10 +12,11 @@ module.exports = {
         const required = ["product_id", "rate", "comment"];
         const {isValid, data} = Validator.validateExistance(req, required);
         if (isValid) {
+            data.rate = Number.parseFloat(data.rate);
             const cart = await Cart.findOne({
                 where: {
                     product_id: data.product_id,
-                    user_id: req.session.user.id,
+                    customer_id: req.session.user.id,
                     is_checkout: true,
                     review: false
                 }
@@ -33,6 +34,8 @@ module.exports = {
                     const product = await Product.findOne({where: {id: item.product_id}});
                     product.rate = ((product.rate* reviewsCount) + item.rate) / (reviewsCount+1);
                     await product.save();
+                    cart.review = true;
+                    await cart.save();
                     return res.redirect(req.url);
                 }
             }
