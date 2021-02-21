@@ -40,11 +40,11 @@
                 </div>
             </div>
             <div class="col-12 col-md-8">
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" id="add_profile_form">
                     <div class="row">
                         <div class="col col-md-12">
                             <label>User Name *</label>
-                            <input type="text" name="username" id="name" class="form-control"
+                            <input type="text" name="username" id="username" class="form-control"
                                 value="<%= session.user.username %>" disabled >
                         </div>
                         <div class="col col-md-12">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-12 col-md-12 profileEmail">
                             <label>Email Address *</label>
-                            <input type="email" id="userEmail" class="form-control" value="<%= session.user.email %>"
+                            <input type="email" id="email" class="form-control" value="<%= session.user.email %>"
                                 placeholder="name@email.com" name="email">
                         </div>
                         <div class="col-12 col-md-12 profileEmail">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
                             <label class="genderLabel">Birth Date *</label>
-                            <input type="date" id="start" name="date_of_birth"
+                            <input type="date" id="date_of_birth" name="date_of_birth"
                                 min="1920-01-01" max="2018-12-31" value="<%= session.user.date_of_birth %>">
                         </div>
                         <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
@@ -77,19 +77,20 @@
                                 </select>
                             </div>
                         </div>
-                            
-                            
                         <div class="col-6 col-md-6">
-                            <label>Profile Image</label>
-                            <input type="file" name="profile_picture" accept="image/*">
-                            <small class="form-text text-muted">Select profile image.</small>
-                            
-                            
+                            <div class="profileinputImgs"  style="height: 102px !important;">
+                                <label>Profile Image</label>
+                                <input type="file" name="profile_picture" accept="image/*">
+                                <small class="form-text text-muted">Select profile image.</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button id="submit" type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
                         </div>
                         <div class="col-6 camContainer">
                             <label class="text-primary cameraLabel">Have a camera ? </label>
                             <p>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <a class="btn btn-primary" onclick="myFunction()" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
                                 </a>
                             </p>
@@ -106,10 +107,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-md-6">
-                            <div class="d-flex align-items-center" style="height: 100%;">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </div>
+                        <div class="col-6 col-md-6 test">
+                            
                         </div>
                     </div>
                 </form>
@@ -122,40 +121,66 @@
     <!-- For scripts -->
     <script src="/static/common/scripts/profileImage.js"></script>
     <script>
-        async function videoTask(){
-            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
-                let video = document.getElementById("camera");
-                video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
-            }
-            document.getElementById("takeScreenshot").addEventListener("click", (event) => {
-                let video = document.getElementById("camera");
-                let canvas = document.querySelector("canvas");
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext("2d").drawImage(video, 0, 0);
-                let name = document.querySelector("#name");
-                let price = document.querySelector("#price");
-                let description = document.querySelector("#description");
-                let stock = document.querySelector("#stock");
-                let is_available = document.querySelector("#is_available");
+        let screenschot = false;
+        const canvas = document.querySelector("canvas");
+        const form = document.getElementById("add_profile_form");
+        const images = document.getElementsByClassName("profileinputImgs")[0];
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if(images.style.display === "none"){
+                console.log("ENTEEEEEEEEEEEEEEEEEERED");
+                const name = document.querySelector("#name");
+                const email = document.querySelector("#email");
+                const address = document.querySelector("#address");
+                const date = document.querySelector("#date");
+                const gender = document.querySelector("#gender");
                 const formData  = new FormData();
                 formData.append("name", name.value);
-                formData.append("price", price.value);
-                formData.append("description", description.value);
-                formData.append("stock", stock.value);
-                formData.append("is_available", is_available.value);
-                formData.append("photos", canvas.toDataURL('image/png'));
-                fetch("/admin/addproduct", {
+                formData.append("email", email.value);
+                formData.append("address", address.value);
+                formData.append("date", date.value);
+                formData.append("gender", gender.value);
+                formData.append("photo", canvas.toDataURL('image/png'));
+                fetch("/profile", {
                     method: 'POST',
                     body: formData
                 }).then(console.log)
                 .catch(console.log)
-            })
-    
+            }else{
+                console.log("here");
+                // $(this).unbind("submit").submit();
+            }
+
+        });
+    async function videoTask(){
+
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            let video = document.getElementById("camera");
+            video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
         }
-        const main =  () => {
-            videoTask();
-        };
-    
-        main();
+        document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+            screenshot = true;
+            let video = document.getElementById("camera");
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext("2d").drawImage(video, 0, 0);
+            
+        })
+
+    }
+    const main =  () => {
+        videoTask();
+    };
+
+    main();
+
+    function myFunction() {
+        
+        if (images.style.display === "none") {
+            images.style.display = "block";
+        } else {
+            images.style.display = "none";
+        }
+    }
     </script>

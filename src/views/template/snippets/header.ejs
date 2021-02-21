@@ -20,7 +20,7 @@
                     </div>
                 <% } %>
                 <% if(session.isAuth) { %>
-                <h3><img class="headerImg2" src="<%= session.user.profile_picture %>"/></h3>
+                <h3><img class="headerImg2" src="<%= (session.user.profile_picture || "/static/common/images/abd/profile.jpg") %>"/></h3>
                 
                 <!-- <p>test</p> -->
                 <div class="btn-group HomeBottonMargin">

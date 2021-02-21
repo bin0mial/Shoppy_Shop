@@ -10,13 +10,13 @@
 <%- contentFor('content') %>
     <div class="container">
         <div class="mainAddProduct bg-secondary" style="margin-top: 20px;">
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" id="add_product_form">
                 <div class="container">
                     <div class="row">
                         <div class="col col-lg-6">
                             <h2 class="addH2">Add New Product:</h2>
                             <label class="text-warning addProductLabel">*Owner ID:</label>
-                            <input type="text" class="form-control bg-light" value="<%= session.user.id %>" disabled>
+                            <input type="text" class="form-control" value="<%= session.user.id %>" disabled>
                             <label class="text-warning addProductLabel">*Product Name:</label>
                             <input type="text" name="name" id="name" class="form-control bg-light" required>
                             <label class="text-warning addProductLabel">*Price:-$</label>
@@ -48,7 +48,7 @@
                                     </a>
                                 </p>
                                 <div id="productinputImgs">
-                                    <input class="productImg" type="file" accept="image/*" name="photos" required>
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
                                     <input class="productImg" type="file" accept="image/*" name="photos">
                                     <input class="productImg" type="file" accept="image/*" name="photos">
                                 </div>
@@ -88,34 +88,52 @@
 <%- contentFor('scripts') %>
 <!-- For scripts -->
 <script>
+        let screenschot = false;
+        const canvas = document.querySelector("canvas");
+        const form = document.getElementById("add_product_form");
+        const images = document.getElementById("productinputImgs");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if(images.style.display === "none"){
+                console.log("ENTEEEEEEEEEEEEEEEEEERED");
+                const name = document.querySelector("#name");
+                const price = document.querySelector("#price");
+                const description = document.querySelector("#description");
+                const stock = document.querySelector("#stock");
+                const is_available = document.querySelector("#is_available");
+                const formData  = new FormData();
+                formData.append("name", name.value);
+                formData.append("price", price.value);
+                formData.append("description", description.value);
+                formData.append("stock", stock.value);
+                formData.append("is_available", is_available.value);
+                formData.append("photos", canvas.toDataURL('image/png'));
+                fetch("/admin/addproduct", {
+                    method: 'POST',
+                    body: formData
+                }).then(console.log)
+                .catch(console.log)
+            }else{
+                console.log("here");
+                // $(this).unbind("submit").submit();
+            }
+
+        });
     async function videoTask(){
+
+
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
             let video = document.getElementById("camera");
             video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
         }
         document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+            screenshot = true;
             let video = document.getElementById("camera");
-            let canvas = document.querySelector("canvas");
+            
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             canvas.getContext("2d").drawImage(video, 0, 0);
-            let name = document.querySelector("#name");
-            let price = document.querySelector("#price");
-            let description = document.querySelector("#description");
-            let stock = document.querySelector("#stock");
-            let is_available = document.querySelector("#is_available");
-            const formData  = new FormData();
-            formData.append("name", name.value);
-            formData.append("price", price.value);
-            formData.append("description", description.value);
-            formData.append("stock", stock.value);
-            formData.append("is_available", is_available.value);
-            formData.append("photos", canvas.toDataURL('image/png'));
-            fetch("/admin/addproduct", {
-                method: 'POST',
-                body: formData
-            }).then(console.log)
-            .catch(console.log)
+            
         })
 
     }
@@ -126,14 +144,11 @@
     main();
 
     function myFunction() {
-        var x = document.getElementById("productinputImgs");
-        var y = document.getElementById("AddBtn");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            y.style.display = "block";
+        
+        if (images.style.display === "none") {
+            images.style.display = "block";
         } else {
-            x.style.display = "none";
-            y.style.display = "none";
+            images.style.display = "none";
         }
     }
 </script>
