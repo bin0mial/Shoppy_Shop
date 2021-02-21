@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col-6 productSubmitBtn w-100">
-                            <button id="AddBtn" type="submit" class="btn btn-primary w-50 btn-md"
+                            <button id="submit" type="submit" class="btn btn-primary w-50 btn-md"
                             style="margin-top: 8px;">Add Product</button>
                         </div>
                     </div>
@@ -126,13 +126,19 @@
                     body: formData
                 }).then(() =>{
                     setTimeout(() => {
-                        location.reload();
+                        location.href = location.href;
                     }, 1500)
                 })
                 .catch(console.log)
             }else{
+                console.log("YES");
                 form.removeEventListener("submit", sendData);
-                form.submit.click()
+                const recall = () => setTimeout(() => {
+                    console.log("try");
+                    form.submit.click()
+                    form.addEventListener("submit", sendData);
+                }, 1500);
+                recall();
             }
 
         };
