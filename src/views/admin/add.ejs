@@ -1,10 +1,9 @@
 <%- contentFor('title') %>
     Add Product
 
-    <%- contentFor("styles") %>
-        <!-- For CSS -->
-        <link rel="stylesheet" href="/static/common/styles/adminAdd.css">
-
+<%- contentFor("styles") %>
+    <!-- For CSS -->
+    <link rel="stylesheet" href="/static/common/styles/adminAdd.css">
 
 
 <%- contentFor('content') %>
@@ -83,7 +82,21 @@
             </form>
         </div>
     </div>
-
+    <div class="custom-model-main">
+        <div class="custom-model-inner">
+            <!-- <div class="close-btn">×</div> -->
+            <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap text-success">
+                    <h2 class="">Confirmation</h2>
+                    <div style="display: flex;align-items: center; justify-content: space-evenly;">
+                        <p>Product Added successfully   </p>
+                    <h2 style="display: inline-block;"><i class="bi bi-patch-check-fill"></i></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-overlay"></div>
+    </div>
 
 <%- contentFor('scripts') %>
 <!-- For scripts -->
@@ -92,7 +105,7 @@
         const canvas = document.querySelector("canvas");
         const form = document.getElementById("add_product_form");
         const images = document.getElementById("productinputImgs");
-        form.addEventListener("submit", function(event) {
+        const sendData =  function(event) {
             event.preventDefault();
             if(images.style.display === "none"){
                 console.log("ENTEEEEEEEEEEEEEEEEEERED");
@@ -111,15 +124,20 @@
                 fetch("/admin/addproduct", {
                     method: 'POST',
                     body: formData
-                }).then(console.log)
+                }).then(() =>{
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500)
+                })
                 .catch(console.log)
             }else{
-                console.log("here");
-                // $(this).unbind("submit").submit();
+                form.removeEventListener("submit", sendData);
+                form.submit.click()
             }
 
-        });
-    async function videoTask(){
+        };
+        form.addEventListener("submit", sendData);
+        async function videoTask(){
 
 
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
@@ -151,4 +169,22 @@
             images.style.display = "none";
         }
     }
+</script>
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script>
+    // $("#AddBtn").on('click', function() {
+    //     $(".custom-model-main").addClass('model-open');
+    // }); 
+    // $(".close-btn, .bg-overlay").click(function(){
+    //     $(".custom-model-main").removeClass('model-open');
+    // });
+
+    $('#add_product_form').submit(function(e){
+        $(".custom-model-main").addClass('model-open');
+        }); 
+        $(".close-btn, .bg-overlay").click(function(){
+            $(".custom-model-main").removeClass('model-open');
+        console.log("submitted"); 
+    });
 </script>
