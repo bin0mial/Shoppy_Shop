@@ -31,9 +31,9 @@ module.exports = {
             const {item, errors} = await ValidateInstanceSave.validateSave(product, Product);
             // TODO
             if (item) {
-                return res.redirect("/");
+                return res.redirect("admin/add");
             }
-            return res.render("", {"layout": "template/admin", errors: errors});
+            return res.render("admin/add", {"layout": "template/admin", errors: errors});
         }
     },
     updateProduct: async (req, res) => {
