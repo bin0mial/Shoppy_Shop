@@ -72,6 +72,7 @@ route.post("/login", middlewares["GuestMiddleware"], bodyParser, loginController
 
 route.get("/items/:slug", bodyParser, ProductController.get);
 route.post("/items/:slug", bodyParser, middlewares["AuthMiddleware"], ProductReviewController.post);
+route.get("/items/add-to-cart/:slug", bodyParser, middlewares["AuthMiddleware"], cartController.post);
 route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, CartController.get);
 
 
