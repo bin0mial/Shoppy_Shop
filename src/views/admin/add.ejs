@@ -18,9 +18,9 @@
                             <label class="text-warning addProductLabel">*Owner ID:</label>
                             <input type="text" class="form-control bg-light" value="<%= session.user.id %>" disabled>
                             <label class="text-warning addProductLabel">*Product Name:</label>
-                            <input type="text" name="name" id="name" class="form-control bg-light">
+                            <input type="text" name="name" id="name" class="form-control bg-light" required>
                             <label class="text-warning addProductLabel">*Price:-$</label>
-                            <input type="number" name="price" id="price" min="1" class="form-control bg-light">
+                            <input type="number" name="price" id="price" min="1" class="form-control bg-light" required>
                             <label class="text-warning addProductLabel">Description:</label>
                             <textarea class="form-control bg-light" name="description" id="description" rows="3"></textarea>
                             <br>
@@ -35,22 +35,31 @@
                             </div>
                             <br>
                             <label class="text-warning addProductLabel">*Stock:</label>
-                            <input type="number" name="stock" id="stock" min="1" class="form-control bg-light">
+                            <input type="number" name="stock" id="stock" min="1" class="form-control bg-light" required>
                         </div>
                         <div class="col col-lg-6">
                             <h2 class="addH2 productImage">Add Image:</h2>
                             <div class="productImgs">
-                                <input class="productImg" type="file" accept="image/*" name="photos">
-                                <input class="productImg" type="file" accept="image/*" name="photos">
-                                <input class="productImg" type="file" accept="image/*" name="photos">
-                                <br>
-                                <label class="text-warning addProductLabel">Have a camera ? </label>
-                                <br>
                                 <p>
-                                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <a class="btn btn-primary tgleInputImgs" data-toggle="collapse" 
+                                        href="#collapseExample" role="button" aria-expanded="false" 
+                                            aria-controls="collapseExample" onclick="myFunction()">
                                         Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
                                     </a>
                                 </p>
+                                <div id="productinputImgs">
+                                    <input class="productImg" type="file" accept="image/*" name="photos" required>
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
+                                </div>
+                                <!-- <label class="text-warning addProductLabel1">Have a camera ? </label> -->
+                                <!-- <p>
+                                    <a class="btn btn-primary tgleInputImgs" data-toggle="collapse" 
+                                        href="#collapseExample" role="button" aria-expanded="false" 
+                                            aria-controls="collapseExample" onclick="myFunction()">
+                                        Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                    </a>
+                                </p> -->
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
                                         <div class="col-12">
@@ -65,8 +74,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="productSubmitBtn w-100">
-                            <button type="submit" class="btn btn-primary w-50 btn-md"
+                        <div class="col-6 productSubmitBtn w-100">
+                            <button id="AddBtn" type="submit" class="btn btn-primary w-50 btn-md"
                             style="margin-top: 8px;">Add Product</button>
                         </div>
                     </div>
@@ -115,4 +124,16 @@
     };
 
     main();
+
+    function myFunction() {
+        var x = document.getElementById("productinputImgs");
+        var y = document.getElementById("AddBtn");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "block";
+        } else {
+            x.style.display = "none";
+            y.style.display = "none";
+        }
+    }
 </script>

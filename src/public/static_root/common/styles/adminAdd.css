@@ -36,7 +36,7 @@
 }
 
 .productImgs{
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 .productSubmitBtn{
     display: flex;
@@ -63,9 +63,20 @@
 }
 
 .productCam{
-    width: 100%;
+    width: 50%;
+    /* height: 60%; */
 }
 
 .canvDiv{
-    width: 100%;
+    width: 50%;
+    /* height: 60%; */
+}
+
+.btn-md{
+    padding: 6px;
+}
+
+.productinputImgs{
+    display: block;
+    transition: ease-in-out all 200ms;
 }
