@@ -71,10 +71,10 @@
                 <div class="links-bottom">
                     <h4>Contact us</h4>
                     <a href="#">Support</a>
-                    <% if(!session.role_id) { %>
+                    <% if(!session.user) { %>
                         <a href="/admin/login">Staff Login</a>
                     <% } %>
-                    <% if(session.role_id===1) { %>
+                    <% if(session.user && session.user.role_id===1) { %>
                         <a href="/admin">Admin Control</a>
                     <% } %>
                 </div>
