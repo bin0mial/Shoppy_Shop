@@ -1,3 +1,7 @@
+<%- contentFor("styles") %>
+<!-- For CSS -->
+<link rel="stylesheet" href="/static/common/styles/itemOrder.css">
+
 <%- contentFor("title") %> Products <%- contentFor("styles") %>
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
@@ -98,9 +102,9 @@
         </div>
 
         <div>
-          <button class="btn btn-block btn-dark" type="submit">
+          <a class="btn btn-block btn-dark" href="/items/add-to-cart/<%= product.slug %>">
             Add to Cart<i class="bi bi-cart" style="margin-left: 8px"></i>
-          </button>
+          </a>
         </div>
         <div>
           <button class="btn btn-block btn-outline-dark" type="submit">
@@ -137,7 +141,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            class="d-block w-100 caroImage"
+            class="d-block caroImage"
             src="/static/common/images/malik/caro1.jpg"
             alt="First slide"
           />
@@ -251,7 +255,7 @@
     <hr style="background-color: lightgray; height: 2px" />
   </div>
   <div class="card">
-    
+
   <div class="feedback form">
     <h2
       style="
