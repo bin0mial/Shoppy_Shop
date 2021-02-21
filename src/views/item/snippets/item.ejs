@@ -6,7 +6,7 @@
             <p class="homeMid2P">$ <%= product.price %></p>
             <div class="homeicons d-flex justify-content-center">
                 <i class="bi bi-eye" onclick="location.href='/items/<%= product.slug %>'"></i>
-                <i class="bi bi-cart-plus-fill"></i>
+                <i class="bi bi-cart-plus-fill" onclick="location.href='/items/<%= product.slug %>'"></i>
                 <i class="bi bi-heart"></i>
             </div>
         </div>
