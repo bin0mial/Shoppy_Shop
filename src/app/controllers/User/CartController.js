@@ -11,7 +11,9 @@ module.exports = {
         const userCart = await Models.cart.findAll({
             where: {customer_id: req.session.user.id},
             include: [
-                {model: Models.product, as: "product"}
+                {model: Models.product, as: "product", include:[
+                    {model: Models.product_image, as: "images"}
+                ]}
             ]
         });
         res.render("orders/cartPage", {"layout": "template",carts: userCart});
@@ -35,7 +37,7 @@ module.exports = {
                 if (cart) {
                     product.stock -= data.quantity;
                     product.is_available = product.is_available? data.quantity>0: false;
-                    product.save();
+                    await product.save();
                     return res.render("orders/cartPage", {"layout": "template", message: "Product added to stock successfully!"});
                 }
             }

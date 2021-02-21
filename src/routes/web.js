@@ -14,6 +14,8 @@ const homepageController = require("../app/controllers/controller");
 const ProfileController = require('../app/controllers/User/ProfileController');
 const controller = require('../app/controllers/controller');
 const ProductController = require('../app/controllers/Product/ProductController');
+const ProductReviewController = require('../app/controllers/Product/ProductReviewsController');
+const CartController = require('../app/controllers/User/CartController');
 const AdminProductPage = require('../app/controllers/Admin/ProductController');
 const AdminLoginController = require('../app/controllers/Auth/AdminLoginController');
 
@@ -68,7 +70,8 @@ route.get("/login", middlewares["GuestMiddleware"], loginController.get);
 route.post("/login", middlewares["GuestMiddleware"], bodyParser, loginController.post);
 
 route.get("/items/:slug", bodyParser, ProductController.get);
-route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, homepageController.mycart);
+route.post("/items/:slug", bodyParser, middlewares["AuthMiddleware"], ProductReviewController.post);
+route.get("/mycart", middlewares["AuthMiddleware"], bodyParser, CartController.get);
 
 
 

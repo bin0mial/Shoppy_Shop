@@ -20,13 +20,16 @@ module.exports = {
         let reviewApplicable= false;
         const product = await Product.findOne({
             where: {slug: req.params.slug, is_available: true},
-            include: [{model: Models.product_image, as: "images"}, {model: Models.product_review, as: "reviews"}]
+            include: [{model: Models.product_image, as: "images"}, {model: Models.product_review, as: "reviews"}],
+            order: [
+                [{model:Models.product_review, as: "reviews"}, 'id', "DESC"]
+            ]
         });
         if(req.session.user){
-            const cart = await Cart.findOne({
+            const cart = await Models.cart.findOne({
                 where: {
-                    product_id: product.product_id,
-                    user_id: req.session.user.id,
+                    product_id: product.id,
+                    customer_id: req.session.user.id,
                     is_checkout: true,
                     review: false
                 }
