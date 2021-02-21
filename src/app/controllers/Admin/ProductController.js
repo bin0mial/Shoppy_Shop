@@ -37,7 +37,6 @@ module.exports = {
             const {item, errors} = await ValidateInstanceSave.validateSave(product, Product);
             // TODO
             if (item) {
-                console.log("entered");
                 const product_images = [];
                 if (req.body.photos) {
                     const root_dir = path.join(path.dirname(require.main.filename), "src", "public", "media_root", "product-images");

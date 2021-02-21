@@ -17,12 +17,25 @@ module.exports = {
     },
     // get data of certian product
     get: async (req, res) => {
+        let reviewApplicable= false;
         const product = await Product.findOne({
             where: {slug: req.params.slug, is_available: true},
             include: [{model: Models.product_image, as: "images"}, {model: Models.product_review, as: "reviews"}]
         });
+        if(req.session.user){
+            const cart = await Cart.findOne({
+                where: {
+                    product_id: product.product_id,
+                    user_id: req.session.user.id,
+                    is_checkout: true,
+                    review: false
+                }
+            });
+            if(cart) reviewApplicable = true;
+
+        }
         if (product)
-            return res.render("orders/itemsOrder", {"layout": "template", product: product});
+            return res.render("orders/itemsOrder", {"layout": "template", product: product, reviewApplicable:reviewApplicable});
         return res.status(404).send("Page not found");
     },
 }
