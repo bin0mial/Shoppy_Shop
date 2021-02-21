@@ -9,6 +9,7 @@ module.exports = {
     getAddPage: async (req, res) => {
         res.render("admin/add", {"layout": "template/template2"});
     },
+    
     getUpdatePage: async (req, res) => {
         const product = await Product.findOne({where: {slug: req.params.slug, is_available: true}});
         if (product)
@@ -36,10 +37,10 @@ module.exports = {
         }
     },
     updateProduct: async (req, res) => {
-        const required = ["slug", "price", "stock", "is_available", "description"];
+        const required = ["price", "stock", "is_available", "description"];
         const {isValid, data} = Validator.validateExistance(req, required);
+        const product = await Product.findOne({where: {slug: req.params.slug}});
         if (isValid) {
-            const product = await Product.findOne({where: {slug: req.params.slug}});
             if (product) {
                 product.price = data.price || 100;
                 product.stock = data.stock || 1;
@@ -47,13 +48,11 @@ module.exports = {
                 product.description = data.description;
                 const isSaved = await product.save();
                 if (isSaved) {
-                    // TODO
-                    return res.render("admin/edit", {"layout": "template/template2"});
+                    return res.render("admin/edit", {"layout": "template/template2", product:product});
                 }
             }
         }
-        // TODO
-        return res.render("profile", {"layout": "template", errors: "Invalid data provided"});
+        return res.render("admin/edit", {"layout": "template/template2", errors: "Invalid data provided", product:product});
 
     },
     deleteProduct: async (req, res) => {
