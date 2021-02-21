@@ -37,7 +37,7 @@ module.exports = {
             include: [{model: Models.role, as: "role"}]
         });
         if (user.role.role !== "admin") {
-            const product = Product.findOne({where: {slug: req.param.slug, is_available:true , stock: {[Op.gte]: data.quantity}}});
+            let product = await Product.findOne({where: {slug: req.params.slug, is_available:true , stock: {[Op.gte]: data.quantity}}});
             if (product) {
                 const cart = await Models.cart.create({
                     product_id: product.id,
@@ -52,7 +52,7 @@ module.exports = {
                 }
             }
         }
-        return res.redirect(req.url);
+        return res.redirect("/mycart");
         // return res.render("orders/cartPage", {"layout": "template", message: "Failed to add product to stock!"});
     }
 }
