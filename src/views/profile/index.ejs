@@ -77,11 +77,34 @@
                                 </select>
                             </div>
                         </div>
+                            
+                            
                         <div class="col-6 col-md-6">
                             <label>Profile Image</label>
                             <input type="file" name="profile_picture" accept="image/*">
-                            <!-- <input type="file" class="form-control-file" style="width: fit-content;"> -->
                             <small class="form-text text-muted">Select profile image.</small>
+                            
+                            
+                        </div>
+                        <div class="col-6 camContainer">
+                            <label class="text-primary cameraLabel">Have a camera ? </label>
+                            <p>
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                </a>
+                            </p>
+                            <div class="collapse"  id="collapseExample">
+                                <div class="card card-body">
+                                    <div class="">
+                                        <video id="camera" class="productCam" autoplay></video>
+                                    </div>
+                                    <div class="">
+                                        <canvas class="canvDiv"></canvas>
+                                    </div>
+                                    <button type="button" class="btn btn-info w-100" 
+                                        id="takeScreenshot">Take ScreenShot</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-6 col-md-6">
                             <div class="d-flex align-items-center" style="height: 100%;">
@@ -98,3 +121,41 @@
 <%- contentFor('script') %>
     <!-- For scripts -->
     <script src="/static/common/scripts/profileImage.js"></script>
+    <script>
+        async function videoTask(){
+            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+                let video = document.getElementById("camera");
+                video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+            }
+            document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+                let video = document.getElementById("camera");
+                let canvas = document.querySelector("canvas");
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext("2d").drawImage(video, 0, 0);
+                let name = document.querySelector("#name");
+                let price = document.querySelector("#price");
+                let description = document.querySelector("#description");
+                let stock = document.querySelector("#stock");
+                let is_available = document.querySelector("#is_available");
+                const formData  = new FormData();
+                formData.append("name", name.value);
+                formData.append("price", price.value);
+                formData.append("description", description.value);
+                formData.append("stock", stock.value);
+                formData.append("is_available", is_available.value);
+                formData.append("photos", canvas.toDataURL('image/png'));
+                fetch("/admin/addproduct", {
+                    method: 'POST',
+                    body: formData
+                }).then(console.log)
+                .catch(console.log)
+            })
+    
+        }
+        const main =  () => {
+            videoTask();
+        };
+    
+        main();
+    </script>
