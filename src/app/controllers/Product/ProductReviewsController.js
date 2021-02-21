@@ -24,11 +24,15 @@ module.exports = {
                 const review = Review.build({
                     product_id: cart.product_id,
                     customer_id: req.session.user.id,
-                    rate: data.rate || 0,
+                    rate: data.rate<=5 && data.rate >=0?data.rate:0 || 0,
                     comment: data.comment || ""
                 });
-                const {item, errors} = await ValidateInstanceSave.validateSave(product, Product);
+                const {item, errors} = await ValidateInstanceSave.validateSave(review, Review);
                 if(item){
+                    const reviewsCount = (await Review.findAll({where: {product_id: item.product_id}})).length;
+                    const product = Product.findOne({where: {id: item.product_id}});
+                    product.rate = ((product.rate* reviewsCount) + item.rate) / (reviewsCount+1);
+                    await product.save();
                     return res.redirect(req.url);
                 }
             }
