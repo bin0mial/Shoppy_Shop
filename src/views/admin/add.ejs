@@ -43,19 +43,26 @@
                                 <input class="productImg" type="file" accept="image/*" name="photos">
                                 <input class="productImg" type="file" accept="image/*" name="photos">
                                 <input class="productImg" type="file" accept="image/*" name="photos">
-                                <div class="col-12">
-                                    <video id="camera" autoplay></video>
+                                <br>
+                                <label class="text-warning addProductLabel">Have a camera ? </label>
+                                <br>
+                                <p>
+                                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                    </a>
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="col-12">
+                                            <video id="camera" class="productCam" autoplay></video>
+                                        </div>
+                                        <div class="col-12 ">
+                                            <canvas class="canvDiv"></canvas>
+                                        </div>
+                                        <button type="button" class="btn btn-info w-100" 
+                                            id="takeScreenshot">Take ScreenShot</button>
+                                    </div>
                                 </div>
-                                <div class="col-12" style="">
-                                    <canvas></canvas>
-                                </div>
-                                <button type="button" class="btn btn-primary w-100" id="takeScreenshot">Take ScreenShot</button>
-                                <!-- <label for="1">Imagem 1</label> -->
-                                <!-- <input class="productImg" type="file" name="imagem[]" id="1"/> -->
-                                <!-- <label for="1">Imagem 2</label> -->
-                                <!-- <input class="productImg" type="file" name="imagem[]" id="2" /> -->
-                                <!-- <label for="1">Imagem 3</label> -->
-                                <!-- <input class="productImg" type="file" name="imagem[]" id="3" /> -->
                             </div>
                         </div>
                         <div class="productSubmitBtn w-100">
@@ -70,6 +77,7 @@
 
 
 <%- contentFor('scripts') %>
+<!-- For scripts -->
 <script>
     async function videoTask(){
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
@@ -103,10 +111,8 @@
 
     }
     const main =  () => {
-         videoTask();
+        videoTask();
     };
 
     main();
 </script>
-    <!-- For scripts -->
-    <!-- <script src="/static/common/scripts/profileImage.js"></script> -->

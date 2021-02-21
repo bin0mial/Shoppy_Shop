@@ -260,3 +260,7 @@ input[type=text]:placeholder {
 #icon {
     width:60%;
 }
+
+.first {
+    padding-top: 10px;
+}

@@ -44,7 +44,7 @@ route.post("/profile", middlewares["AuthMiddleware"], middlewares["UploadPhotoMi
 route.get("/admin/login", bodyParser, middlewares["GuestMiddleware"], AdminLoginController.get);
 route.post("/admin/login", bodyParser, middlewares["GuestMiddleware"], AdminLoginController.post);
 
-// Dashboard
+// Admin Dashboard
 route.get("/admin", bodyParser, middlewares["AdminMiddleware"], homepageController.admin);
 route.get("/admin/orders", bodyParser, middlewares["AdminMiddleware"], homepageController.adminOrders);
 route.get("/admin/addproduct", bodyParser, middlewares["AdminMiddleware"], AdminProductPage.getAddPage);

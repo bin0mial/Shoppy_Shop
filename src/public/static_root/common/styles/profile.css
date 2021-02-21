@@ -25,10 +25,19 @@
     margin-top: 10px;
 }
 
-/* .active{
-    background-color: rgb(245, 129, 109) !important;
-} */
+.cameraLabel{
+    display: block;
+}
 
 .genderLabel{
     display: block !important;
 }
+
+.productCam{
+    width: 100%;
+}
+
+.canvDiv{
+    width: 100%;
+}
+
