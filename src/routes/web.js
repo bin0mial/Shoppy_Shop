@@ -18,6 +18,7 @@ const ProductReviewController = require('../app/controllers/Product/ProductRevie
 const CartController = require('../app/controllers/User/CartController');
 const AdminProductPage = require('../app/controllers/Admin/ProductController');
 const AdminLoginController = require('../app/controllers/Auth/AdminLoginController');
+const AdminHomepageController = require('../app/controllers/Admin/HomepageController');
 
 route.use(cookieParser());
 route.use(session({
@@ -48,12 +49,13 @@ route.get("/admin/login", bodyParser, middlewares["GuestMiddleware"], AdminLogin
 route.post("/admin/login", bodyParser, middlewares["GuestMiddleware"], AdminLoginController.post);
 
 // Admin Dashboard
-route.get("/admin", bodyParser, middlewares["AdminMiddleware"], homepageController.admin);
+route.get("/admin", bodyParser, middlewares["AdminMiddleware"], AdminHomepageController.list);
 route.get("/admin/orders", bodyParser, middlewares["AdminMiddleware"], homepageController.adminOrders);
 route.get("/admin/addproduct", bodyParser, middlewares["AdminMiddleware"], AdminProductPage.getAddPage);
 route.post("/admin/addproduct", bodyParser, middlewares["AdminMiddleware"], middlewares["UploadProductImagesMiddleware"].array("photos", 12), AdminProductPage.addProduct);
 route.get("/admin/editproduct/:slug", bodyParser, middlewares["AdminMiddleware"], AdminProductPage.getUpdatePage);
 route.post("/admin/editproduct/:slug", bodyParser, middlewares["AdminMiddleware"], AdminProductPage.updateProduct);
+route.get("/admin/deleteproduct/:slug", bodyParser, middlewares["AdminMiddleware"], AdminProductPage.deleteProduct);
 
 //=================
 

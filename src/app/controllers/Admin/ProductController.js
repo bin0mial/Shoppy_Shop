@@ -99,13 +99,11 @@ module.exports = {
 
     },
     deleteProduct: async (req, res) => {
-        const required = ["slug"];
-        const {isValid, data} = Validator.validateExistance(req, required);
-        if (isValid) {
-            const product = await Product.findOne({where: {slug: req.params.slug}});
-            if (product) {
-                product.destroy();
-            }
+        const product = await Product.findOne({where: {slug: req.params.slug}});
+        if (product) {
+            await product.destroy();
         }
+        return res.redirect("/admin");
     }
+    
 }
