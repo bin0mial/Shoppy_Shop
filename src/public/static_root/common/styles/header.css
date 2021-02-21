@@ -11,7 +11,14 @@
     margin-right: 10px;
 }
 
-.profile img{
+.headerImg1{
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #3B5998;
+    object-fit: fill;
+}
+
+.headerImg2{
     width: 40px;
     border-radius: 50%;
     object-fit: fill;
@@ -20,6 +27,7 @@
 .profile p{
     color: white;
 }
+
 .profile h3{
     font-size: larger;
     margin: 0;
@@ -46,6 +54,9 @@
     color:  rgb(121, 121, 121) !important;
 }
 
+.logo:hover .headerLogoImg{
+    opacity: 0.7;
+}
 
 
 .logo ,.bi-search ,.bi-person-fill ,.bi-heart-fill , .bi-cart{
@@ -80,4 +91,13 @@
 
 .profile-p{
     margin-left: 8px !important;
+}
+
+.headerLogoImg{
+    transition: all ease-in-out 200ms;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3B5998;
+    border-radius: 50%;
+    object-fit: fill;
 }

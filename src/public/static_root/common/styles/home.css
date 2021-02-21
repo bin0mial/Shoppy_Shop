@@ -27,7 +27,7 @@
 
 .homeParent2{
     cursor: pointer;
-    width: 320;
+    /* width: 320; */
     height: 490px;
     overflow: hidden;
     display: flex;
@@ -37,15 +37,15 @@
     text-align: center;
 }
 
-.homeParent2:hover .homeIMGTop2 {
-    left: -10px;
-}
-
 .homeIMGTop2{
     left: -0px;
     /* object-fit: contain; */
-    /* position: relative; */
+    position: relative;
     transition: 0.2s all ease-in-out;
+}
+
+.homeParent2:hover .homeIMGTop2 {
+    left: -10px;
 }
 
 .edit-square{
@@ -76,12 +76,13 @@
 
 .homePTop{
     font-size: larger;
-    color: #f1faee;
+    color: #e63946;
     /* color: #353535; */
 }
 
 .homeHTop{
-    color: #e63946 !important;
+    /* color: #e63946 !important; */
+    color: #2d3d5f !important;
 }
 
 .homeP{
@@ -173,4 +174,32 @@
 
 .homeMid2H{
     /* width: 180px; */
+}
+
+
+.homeArrowup{
+    position: relative;
+    top: 0px;
+    transition: 0.2s all ease-in-out;
+}
+
+.homeArrowdw{
+    position: relative;
+    top: 0px;
+    transition: 0.2s all ease-in-out;
+}
+
+.homeParent2:hover .homeArrowup{
+    top: 10px;
+}
+
+.homeParent2:hover .homeArrowdw{
+    top: -10px;
+}
+
+.centertest{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand logo" href="/">Shoppy store</a>
+        <a class="navbar-brand logo" href="/"><img src="/static/common/images/malik/logo.png" class="headerLogoImg"> Shoppy store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse justify-content-end align-middle" id="navbarScroll">
             <div class="profile">
                 <% if(!session.isAuth) { %>
-                    <h3><img src="/static/common/images/abd/profile.jpg"/></h3>
+                    <h3><img class="headerImg1" src="/static/common/images/abd/profile.jpg"/></h3>
                     <div class="btn-group HomeBottonMargin">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                             Hello. Log In
@@ -20,7 +20,7 @@
                     </div>
                 <% } %>
                 <% if(session.isAuth) { %>
-                <h3><img src="<%= session.user.profile_picture %>"/></h3>
+                <h3><img class="headerImg2" src="<%= session.user.profile_picture %>"/></h3>
                 
                 <!-- <p>test</p> -->
                 <div class="btn-group HomeBottonMargin">

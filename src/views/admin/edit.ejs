@@ -3,7 +3,7 @@
 
 <%- contentFor("styles") %>
 <!-- For CSS -->
-<link rel="stylesheet" href="/static/common/styles/adminEdit.css">
+<!-- <link rel="stylesheet" href="/static/common/styles/adminEdit.css"> -->
 
 
 <%- contentFor('content') %>
@@ -15,10 +15,10 @@
                         <div class="col-lg-3"></div>
                         <div class="col col-lg-6">
                             <h2 class="H2">Edit product:</h2>
-                            <label class="text-warning addProductLabel">Product Name: <small>*Not Editable</small></label>
+                            <label class="text-warning addProductLabel">Product Name: <small>*Not Editable*</small></label>
                             <input type="text" class="form-control bg-light" value="<%= product.name %>" disabled>
                             <label class="text-warning addProductLabel">*Price:-$</label>
-                            <input type="number" name="price" id="name" min="1" 
+                            <input type="number" name="price" min="1" 
                                 class="form-control bg-light" value="<%= product.price %>">
                             <label class="text-warning addProductLabel">Description:</label>
                             <textarea class="form-control bg-light" name="description" 
@@ -35,7 +35,7 @@
                             </div>
                             <br>
                             <label class="text-warning addProductLabel">*Stock:</label>
-                            <input type="number" name="stock" id="name" min="1" 
+                            <input type="number" name="stock" min="1" 
                                 class="form-control bg-light" value="<%= product.stock %>">
                         </div>
                         <div class="productSubmitBtn w-100">
