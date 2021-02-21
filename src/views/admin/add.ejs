@@ -10,39 +10,46 @@
 <%- contentFor('content') %>
     <div class="container">
         <div class="mainAddProduct bg-secondary" style="margin-top: 20px;">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <div class="container">
                     <div class="row">
                         <div class="col col-lg-6">
                             <h2 class="addH2">Add New Product:</h2>
                             <label class="text-warning addProductLabel">*Owner ID:</label>
-                            <input type="text" name="owner_id" class="form-control bg-light">
+                            <input type="text" class="form-control bg-light" value="<%= session.user.id %>" disabled>
                             <label class="text-warning addProductLabel">*Product Name:</label>
-                            <input type="text" name="name" class="form-control bg-light">
+                            <input type="text" name="name" id="name" class="form-control bg-light">
                             <label class="text-warning addProductLabel">*Price:-$</label>
-                            <input type="number" name="price" min="1" class="form-control bg-light">
+                            <input type="number" name="price" id="price" min="1" class="form-control bg-light">
                             <label class="text-warning addProductLabel">Description:</label>
-                            <textarea class="form-control bg-light" name="description" rows="3"></textarea>
+                            <textarea class="form-control bg-light" name="description" id="description" rows="3"></textarea>
                             <br>
                             <div class="btn-group btn-group-toggle adminEditAv" data-toggle="buttons">
                                 <h5 class="text-warning" style="margin-right: 10px;">*Availability:</h5>
                                 <label class="btn btn-info active">
-                                <input type="radio" value="1" name="is_available" checked>Yes
+                                <input type="radio" value="1" id="is_available" name="is_available" checked>Yes
                                 </label>
                                 <label class="btn btn-info">
-                                <input type="radio" value="0" name="is_available">No
+                                <input type="radio" value="0" id="is_available" name="is_available">No
                                 </label>
                             </div>
                             <br>
                             <label class="text-warning addProductLabel">*Stock:</label>
-                            <input type="number" name="stock" min="1" class="form-control bg-light">
+                            <input type="number" name="stock" id="stock" min="1" class="form-control bg-light">
                         </div>
                         <div class="col col-lg-6">
                             <h2 class="addH2 productImage">Add Image:</h2>
                             <div class="productImgs">
-                                <input class="productImg" type="file" accept="image/*" name="product_picture">
-                                <input class="productImg" type="file" accept="image/*" name="product_picture">
-                                <input class="productImg" type="file" accept="image/*" name="product_picture">
+                                <input class="productImg" type="file" accept="image/*" name="photos">
+                                <input class="productImg" type="file" accept="image/*" name="photos">
+                                <input class="productImg" type="file" accept="image/*" name="photos">
+                                <div class="col-12">
+                                    <video id="camera" autoplay></video>
+                                </div>
+                                <div class="col-12" style="">
+                                    <canvas></canvas>
+                                </div>
+                                <button type="button" class="btn btn-primary w-100" id="takeScreenshot">Take ScreenShot</button>
                                 <!-- <label for="1">Imagem 1</label> -->
                                 <!-- <input class="productImg" type="file" name="imagem[]" id="1"/> -->
                                 <!-- <label for="1">Imagem 2</label> -->
@@ -62,6 +69,44 @@
     </div>
 
 
-<%- contentFor('script') %>
+<%- contentFor('scripts') %>
+<script>
+    async function videoTask(){
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            let video = document.getElementById("camera");
+            video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+        }
+        document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+            let video = document.getElementById("camera");
+            let canvas = document.querySelector("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext("2d").drawImage(video, 0, 0);
+            let name = document.querySelector("#name");
+            let price = document.querySelector("#price");
+            let description = document.querySelector("#description");
+            let stock = document.querySelector("#stock");
+            let is_available = document.querySelector("#is_available");
+            const formData  = new FormData();
+            formData.append("name", name.value);
+            formData.append("price", price.value);
+            formData.append("description", description.value);
+            formData.append("stock", stock.value);
+            formData.append("is_available", is_available.value);
+            formData.append("photos", canvas.toDataURL('image/png'));
+            fetch("/admin/addproduct", {
+                method: 'POST',
+                body: formData
+            }).then(console.log)
+            .catch(console.log)
+        })
+
+    }
+    const main =  () => {
+         videoTask();
+    };
+
+    main();
+</script>
     <!-- For scripts -->
     <!-- <script src="/static/common/scripts/profileImage.js"></script> -->

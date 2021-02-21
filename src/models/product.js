@@ -22,11 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   product.init({
     id: {type:DataTypes.BIGINT, autoIncrement:true, primaryKey:true, allowNull:false},
     name: {type: DataTypes.STRING, allowNull:false},
-    slug: {type: DataTypes.STRING, allowNull:false, unique:true,
-        set(val) {
-            this.setDataValue("slug", slugify(val, {lower:true, strict: true}))
-        }
-    },
+    slug: {type: DataTypes.STRING, allowNull:false, unique:true},
     stock: {type:DataTypes.INTEGER, allowNull:false, defaultValue:1},
     price: {type: DataTypes.FLOAT, allowNull:false},
     is_available: {type: DataTypes.BOOLEAN, allowNull:false, defaultValue:true},
@@ -46,6 +42,9 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'product',
   });
+
+  product.slugify = value => slugify(value+"-"+Number.parseInt(Math.random()*1E10+""), {lower:true, strict: true});
+
 
   return product;
 };

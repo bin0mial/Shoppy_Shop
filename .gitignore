@@ -107,3 +107,4 @@ dist
 # Media files
 src/public/media_root/images/
 src/public/media_root/videos/
+src/public/media_root/product-images/

@@ -8,9 +8,10 @@ module.exports = {
                 item = itm.save()
                     .then(res => res)
                     .catch(errs => {
-                        errs.errors.forEach(error => {
-                            errors[error.path.substring(Model.tableName.length+1)] = error.message.substring(Model.tableName.length+1);
-                        });
+                        if(Array.isArray(errs.errors))
+                            errs.errors.forEach(error => {
+                                errors[error.path.substring(Model.tableName.length+1)] = error.message.substring(Model.tableName.length+1);
+                            });
                     })
             })
             .catch(errs => {

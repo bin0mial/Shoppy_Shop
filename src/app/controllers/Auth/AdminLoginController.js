@@ -14,7 +14,7 @@ const validateLogin = (req) => {
 
 module.exports = {
     get:(req, res) => {
-        res.render("auth/LoginPage",{"layout": "template/template2"});
+        res.render("auth/AdminLoginPage",{"layout": "template/template2"});
     },
 
     post: async (req, res) => {
@@ -29,11 +29,11 @@ module.exports = {
             });
             if(user && User.checkPassword(req.body.password, user.password)){
                 Helper.authenticate(req, user);
-                return res.status(302).redirect("/");
+                return res.status(302).redirect("/admin/");
             }
             errors["username_password"]= "username/email or password are not correct";
         }
-        return res.render("auth/LoginPage",{"layout": "template/template2", errors:errors});
+        return res.render("auth/AdminLoginPage",{"layout": "template/template2", errors:errors});
     },
     logout: (req, res) => {
         Helper.logout(req);
